@@ -5,6 +5,13 @@ const Recipe = ({ recipe }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage]= useState(1);
   const [RecipePerPage] = useState(9);
+  const [recipes, setRecipes] = useState([]); // State to store the list of recipes
+  const [recipeData, setRecipeData] = useState({
+    name: '',
+    ingredients: [],
+    instructions: '',
+    // ... other fields
+  });
 
   useEffect(() => {
     // If fetching data asynchronously, update loading state here
