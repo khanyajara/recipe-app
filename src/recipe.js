@@ -10,6 +10,7 @@ const Recipe = ({ recipe }) => {
     name: '',
     ingredients: [],
     instructions: '',
+    recipeServings:'',
     // ... other fields
   });
 

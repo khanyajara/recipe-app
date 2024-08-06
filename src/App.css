@@ -2,3 +2,10 @@
   text-align: center;
 }
 
+
+.btn{
+  background-color: aqua;
+  height: 45px;
+  width: 85px;
+  border-radius: 25px;
+}

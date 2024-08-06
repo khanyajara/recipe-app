@@ -6,6 +6,7 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('');
+  const [filteredRecipes, setFilteredRecipes]=useState('');
   const [recipeData,setRecipeData]=useState('');
   const [recipe,setRecipe]=useState('')
   const [showForm,setShowForm]=useState('');
@@ -37,11 +38,30 @@ const App = () => {
     } finally {
       setLoading(false);
     }
-  };
+  };        
 
   useEffect(() => {
     fetchData();
   }, []);
+
+
+  //Function to filter recipes based on search query
+  const handleSearch = (e) => {
+    const newSearchQuery = e.target.value.toLowerCase();
+    setSearch(newSearchQuery);
+
+    if (newSearchQuery){
+      //filter recipes based on search term in name or ingredients
+      const filtered = recipes.filter((recipe)=>
+      recipe.name.toLowerCase().includes(newSearchQuery)||
+      recipe.ingredients.join('').toLowerCase().includes(newSearchQuery)
+      );
+      setFilteredRecipes(filtered);
+    }else {
+      //reset to all recipes if search query is empty
+      setFilteredRecipes(recipes);
+    }
+    };
 
   // Function to get the starting index of the current page
   const indexOfFirstRecipe = (currentPage) => {
@@ -65,7 +85,8 @@ const App = () => {
     setCurrentPage(Math.max(currentPage - 1, 1));
   };
 
-  const currentRecipes = recipes.slice(indexOfFirstRecipe(currentPage), indexOfLastRecipe(currentPage));
+  const currentRecipes = search ? filteredRecipes.slice(indexOfFirstRecipe(currentPage), indexOfLastRecipe(currentPage)) : recipes.slice(indexOfFirstRecipe(currentPage), indexOfLastRecipe(currentPage));
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -92,6 +113,9 @@ const App = () => {
   return (
     <div className="app">
       <h1>Recipe Book</h1>
+      <div className='search-bar'>
+        <input type='text' placeholder='search recipes' value={search} onChange={handleSearch}/>
+        </div>
       <div className="add-recipe">
         <h3 className="recipe-form">Add a New Recipe</h3>
         <button id="showHideButton" onClick={handleShowHideClick}>
@@ -101,20 +125,35 @@ const App = () => {
         {showForm && (
           <form onSubmit={handleSubmit}>
              <label for="recipeName" >Recipe Name:</label>
-        <input type="text" id="recipeName" name="recipeName" value={recipe.name} onChange={(e) => setRecipe({ ...recipe, name: e.target.value
+        <input type="text"
+         id="recipeName"
+          name="recipeName"
+           value={recipe.name} 
+           onChange={(e) =>
+             setRecipe({ ...recipe, name: e.target.value
           })} />
           <br />
           <label for="recipeIngredients">Recipe Ingredients:</label>
-            <textarea id="recipeIngredients" name="recipeIngredients" value={recipe.ingredients} onChange={(e)=>setRecipeData({...recipe, ingredients: e.target.value})}/>
+            <textarea id="recipeIngredients"
+             name="recipeIngredients"
+              value={recipe.ingredients}
+               onChange={(e)=>
+               setRecipeData({...recipe, ingredients: e.target.value})}/>
             <br />
             <label for="recipeInstructions">Recipe Instructions:</label>
-            <textarea id="recipeInstructions" name="recipeInstructions" value={recipe.instructions} onChange={(
+            <textarea id="recipeInstructions"
+             name="recipeInstructions"
+              value={recipe.instructions} 
+              onChange={(
               e) => setRecipeData({...recipe, instructions: e.target.value})}/>
               <br />
               <label for="recipeServings">Recipe Servings:</label>
-              <input type="number" id="recipeServings" name="recipeServings" value
-              ={recipe.servings} onChange={(e) => setRecipeData({...recipe, servings: e
-                .target.value})}/>
+              <input type="number"
+               id="recipeServings"
+                name="recipeServings" 
+                value={recipe.servings}
+                 onChange={(e) =>
+                   setRecipeData({...recipe, servings: e.target.value})}/>
           <button type="submit" id>submit</button>
        
            
@@ -122,15 +161,20 @@ const App = () => {
         )}
       </div>
       <div className="recipes-list">
-        <button disabled={currentPage === 1} onClick={handlePrevClick}>
+        <button className='btn'  disabled={currentPage === 1} onClick={handlePrevClick}>
           Previous
+        </button>  <button className='btn' disabled={currentPage === Math.ceil(recipes.length / recipesPerPage)} onClick={handleNextClick}>
+          Next
         </button>
         {currentRecipes.map((recipe, index) => (
           <Recipe key={index} recipe={recipe} />
         ))}
-        <button disabled={currentPage === Math.ceil(recipes.length / recipesPerPage)} onClick={handleNextClick}>
+        <button className='btn'  disabled={currentPage === 1} onClick={handlePrevClick}>
+          Previous
+        </button>  <button className='btn' disabled={currentPage === Math.ceil(recipes.length / recipesPerPage)} onClick={handleNextClick}>
           Next
         </button>
+      
       </div>
     </div>
   );
