@@ -116,56 +116,12 @@ const App = () => {
       <div className='search-bar'>
         <input type='text' placeholder='search recipes' value={search} onChange={handleSearch}/>
         </div>
-      <div className="add-recipe">
-        <h3 className="recipe-form">Add a New Recipe</h3>
-        <button id="showHideButton" onClick={handleShowHideClick}>
-          New Recipe
-        </button>
+      
 
-        {showForm && (
-          <form onSubmit={handleSubmit}>
-             <label for="recipeName" >Recipe Name:</label>
-        <input type="text"
-         id="recipeName"
-          name="recipeName"
-           value={recipe.name} 
-           onChange={(e) =>
-             setRecipe({ ...recipe, name: e.target.value
-          })} />
-          <br />
-          <label for="recipeIngredients">Recipe Ingredients:</label>
-            <textarea id="recipeIngredients"
-             name="recipeIngredients"
-              value={recipe.ingredients}
-               onChange={(e)=>
-               setRecipeData({...recipe, ingredients: e.target.value})}/>
-            <br />
-            <label for="recipeInstructions">Recipe Instructions:</label>
-            <textarea id="recipeInstructions"
-             name="recipeInstructions"
-              value={recipe.instructions} 
-              onChange={(
-              e) => setRecipeData({...recipe, instructions: e.target.value})}/>
-              <br />
-              <label for="recipeServings">Recipe Servings:</label>
-              <input type="number"
-               id="recipeServings"
-                name="recipeServings" 
-                value={recipe.servings}
-                 onChange={(e) =>
-                   setRecipeData({...recipe, servings: e.target.value})}/>
-          <button type="submit" id>submit</button>
        
-           
-          </form>
-        )}
-      </div>
+      
       <div className="recipes-list">
-        <button className='btn'  disabled={currentPage === 1} onClick={handlePrevClick}>
-          Previous
-        </button>  <button className='btn' disabled={currentPage === Math.ceil(recipes.length / recipesPerPage)} onClick={handleNextClick}>
-          Next
-        </button>
+        
         {currentRecipes.map((recipe, index) => (
           <Recipe key={index} recipe={recipe} />
         ))}
