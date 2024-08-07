@@ -1,11 +1,11 @@
-/* Recipe component styles */
+
 .recipe {
     border: 1px solid #f5cfcf;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 50px; /* Add some spacing between recipes */
-    width: 395px;
-    margin-left: 285px;
+    width: 595px;
+    margin-left: 585px;
     
   }
   
@@ -36,7 +36,7 @@
     margin-bottom: 10px;
   }
   
-/* From Uiverse.io by LilaRest */ 
+ 
 button {
   display: flex;
   justify-content: center;
@@ -242,4 +242,9 @@ button {
   padding: 15px;
   justify-content: center;
   justify-content: space-between;
+}
+
+.search-bar{
+  align-items: center;
+  margin-left: 596px;
 }
