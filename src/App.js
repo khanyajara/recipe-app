@@ -54,7 +54,7 @@ const App = () => {
       //filter recipes based on search term in name or ingredients
       const filtered = recipes.filter((recipe)=>
       recipe.name.toLowerCase().includes(newSearchQuery)||
-      recipe.ingredients.join('').toLowerCase().includes(newSearchQuery)
+      recipe.ingredients.join('').toLowerCase().includes(newSearchQuery)  
       );
       setFilteredRecipes(filtered);
     }else {

@@ -111,7 +111,7 @@ const Recipe = ({ recipe }) => {
             <input
               type="text"
               name="name"
-              placeholder="Recipe Name"
+              placeholder="Recipe Name"  
               value={recipeData.name}
               onChange={handleInputChange}
               required
