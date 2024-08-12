@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Css from "./recipe.css";
 
 const Recipe = ({ recipe }) => {
@@ -17,9 +17,13 @@ const Recipe = ({ recipe }) => {
   const [showForm, setShowForm] = useState(false); // State to control form visibility
  const [editingIndex,setEditingIndex]=useState(null);
  const [index,setIndex]=useState()
+ const [selectedCategory, setSelectedCategory] = useState('all');
+ const [filterItem,setFilterItem]= useState([])
 
 
   useEffect(() => {
+   
+
     // If fetching data asynchronously, update loading state here
     setIsLoading(false); // Example: after data is fetched
   }, []);
@@ -83,6 +87,11 @@ const Recipe = ({ recipe }) => {
   const handleDeleteRecipe =(index) =>{
     const updatedRecipes = recipes.filter((_, i)=> i !== index);
     setRecipes(updatedRecipes);
+  }
+
+  const filter = (curcat)=>{
+    const filteredRecipes = recipe.filter(recipe => recipe.category === curcat);
+    setRecipes(filteredRecipes);
   }
 
   const handleToggleFavorite =(index)=>{
@@ -158,6 +167,7 @@ const Recipe = ({ recipe }) => {
             <option value="dinner">Dinner</option>
             <option value="dessert">Dessert</option>
             <option value="snacks">Snacks</option>
+            <option value="appetizers">Appetizers</option>
           </select><br/>
           <label>
             <input

@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Recipe from './recipe'; // Assuming Recipe component is imported correctly
-import Css from './App.css';
+import './App.css';
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('');
-  const [filteredRecipes, setFilteredRecipes]=useState('');
-  const [recipeData,setRecipeData]=useState('');
-  const [recipe,setRecipe]=useState('')
-  const [showForm,setShowForm]=useState('');
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [recipesPerPage] = useState(2); // Display 2 recipes per page
+  const [recipesPerPage] = useState(2);
 
   const fetchData = async () => {
     try {
@@ -32,61 +29,68 @@ const App = () => {
       const data = await response.json();
       console.log('Fetched data:', data);
       setRecipes(data.recipes);
+      setFilteredRecipes(data.recipes); // Set filteredRecipes to all recipes initially
     } catch (error) {
       console.error('Error fetching data:', error);
       setError(error);
     } finally {
       setLoading(false);
     }
-  };        
+  };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-
-  //Function to filter recipes based on search query
   const handleSearch = (e) => {
     const newSearchQuery = e.target.value.toLowerCase();
     setSearch(newSearchQuery);
+    filterRecipes(newSearchQuery, selectedCategory);
+  };
 
-    if (newSearchQuery){
-      //filter recipes based on search term in name or ingredients
-      const filtered = recipes.filter((recipe)=>
-      recipe.name.toLowerCase().includes(newSearchQuery)||
-      recipe.ingredients.join('').toLowerCase().includes(newSearchQuery)  
-      );
-      setFilteredRecipes(filtered);
-    }else {
-      //reset to all recipes if search query is empty
-      setFilteredRecipes(recipes);
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    filterRecipes(search, category);
+  };
+
+  const filterRecipes = (searchQuery, category) => {
+    let filtered = recipes;
+
+    if (category !== 'All') {
+      filtered = filtered.filter((recipe) => recipe.category === category);
     }
-    };
 
-  // Function to get the starting index of the current page
+    if (searchQuery) {
+      filtered = filtered.filter(
+        (recipe) =>
+          recipe.name.toLowerCase().includes(searchQuery) ||
+          recipe.ingredients.join('').toLowerCase().includes(searchQuery)
+      );
+    }
+
+    setFilteredRecipes(filtered);
+    setCurrentPage(1); // Reset to first page on new search or category change
+  };
+
   const indexOfFirstRecipe = (currentPage) => {
     return (currentPage - 1) * recipesPerPage;
   };
 
-  // Function to get the ending index of the current page
   const indexOfLastRecipe = (currentPage) => {
     const lastIndex = currentPage * recipesPerPage;
-    return lastIndex > recipes.length ? recipes.length : lastIndex;
+    return lastIndex > filteredRecipes.length ? filteredRecipes.length : lastIndex;
   };
 
-  // Function to handle next button click
   const handleNextClick = () => {
-    const newPage = Math.min(currentPage + 1, Math.ceil(recipes.length / recipesPerPage));
+    const newPage = Math.min(currentPage + 1, Math.ceil(filteredRecipes.length / recipesPerPage));
     setCurrentPage(newPage);
   };
 
-  // Function to handle previous button click
   const handlePrevClick = () => {
     setCurrentPage(Math.max(currentPage - 1, 1));
   };
 
-  const currentRecipes = search ? filteredRecipes.slice(indexOfFirstRecipe(currentPage), indexOfLastRecipe(currentPage)) : recipes.slice(indexOfFirstRecipe(currentPage), indexOfLastRecipe(currentPage));
-  
+  const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe(currentPage), indexOfLastRecipe(currentPage));
 
   if (loading) {
     return <div>Loading...</div>;
@@ -96,41 +100,47 @@ const App = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  if (recipes.length === 0 || !recipes.some((recipe) => Object.keys(recipe).length > 0)) {
+  if (filteredRecipes.length === 0 || !filteredRecipes.some((recipe) => Object.keys(recipe).length > 0)) {
     return <div>No recipes available.</div>;
   }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission logic here
-    console.log(recipeData); // For now, log the data to the console
-  };
-
-  const handleShowHideClick = () => {
-    setShowForm(!showForm); // Toggle form visibility
-  };
 
   return (
     <div className="app">
       <h1>Recipe Book</h1>
+
       <div className='search-bar'>
-        <input type='text' placeholder='search recipes' value={search} onChange={handleSearch}/>
+        <input type='text' placeholder='Search recipes' value={search} onChange={handleSearch} />
+      </div>
+
+      {currentRecipes.length >0 && (
+      <div className='category-select'>
+          <label>Select Category: </label>
+          <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)}>
+            <option value="All">All</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Snacks">Snacks</option>
+          </select>
+          {currentRecipes.map((recipe, index) => (
+      <Recipe key={index} recipe={recipe} />
+    ))}
         </div>
+        )}<div className="recipes-list">
+            {currentRecipes.map((recipe, index) => (
+              <Recipe key={index} recipe={recipe} />
+            ))}
+          </div>
       
 
-       
-      
-      <div className="recipes-list">
-        
-        {currentRecipes.map((recipe, index) => (
-          <Recipe key={index} recipe={recipe} />
-        ))}
-        <button className='btn'  disabled={currentPage === 1} onClick={handlePrevClick}>
+      <div className="pagination">
+        <button className='btn' disabled={currentPage === 1} onClick={handlePrevClick}>
           Previous
-        </button>  <button className='btn' disabled={currentPage === Math.ceil(recipes.length / recipesPerPage)} onClick={handleNextClick}>
+        </button>
+        <button className='btn' disabled={currentPage === Math.ceil(filteredRecipes.length / recipesPerPage)} onClick={handleNextClick}>
           Next
         </button>
-      
       </div>
     </div>
   );
