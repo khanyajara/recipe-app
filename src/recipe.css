@@ -72,7 +72,7 @@ button {
 }
 
 button:hover {
-  background-color: #eee;
+  background-color: #73e2d3;
   transform: scale(105%);
   animation: movingBorders 3s infinite;
 }
@@ -127,7 +127,7 @@ button {
   align-items: center;
   padding: 1em;
   border: 0px solid transparent;
-  background-color: rgba(236, 135, 3, 0.877);
+  background-color: rgba(3, 162, 236, 0.877);
   border-radius: 1.25em;
   transition: all 0.2s linear;
   

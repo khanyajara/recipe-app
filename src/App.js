@@ -124,14 +124,14 @@ const App = () => {
     <Router>
       <div className="app">
         {isAuthenticated ? (
-          <>
+          <><div></div>
             <div className="logo-container">
               <video className="logo-video" autoPlay loop muted>
                 <source src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/meal-8820888-7140050.mp4" type="video/mp4" />
                 Need a better browser.
               </video>
             </div>
-            <h1>Recipe Book</h1>
+            <h1>My Personal Chef</h1>
             <div className="user-info">
               <p>Welcome, {loggedInUser?.username || 'User'}!</p>
             </div>
