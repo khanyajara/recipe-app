@@ -1,11 +1,14 @@
-
+body{
+  justify-content: center;
+  align-items: center;
+}
 .recipe {
     border: 1px solid #f5cfcf;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 50px; /* Add some spacing between recipes */
     width: 595px;
-    margin-left: 585px;
+    margin-left: 55px;
     
   }
   

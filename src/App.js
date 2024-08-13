@@ -1,96 +1,116 @@
 import React, { useState, useEffect } from 'react';
-import Recipe from './recipe'; // Assuming Recipe component is imported correctly
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Login from './components/login';
+import Register from './components/register';
+import Recipe from './recipe';
 import './App.css';
+import { v4 as uuidv4 } from 'uuid';
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState('');
-  const [filteredRecipes, setFilteredRecipes] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recipesPerPage] = useState(2);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
-  const fetchData = async () => {
-    try {
-      console.log('Fetching data from /db.json');
-      const response = await fetch('/db.json');
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (storedUser) {
+      setIsAuthenticated(true);
+      setLoggedInUser(storedUser);
+    }
+    setLoading(false); // Done loading user data
+  }, []);
 
-      if (!response.ok) {
-        throw new Error(`Network response error: ${response.status} ${response.statusText}`);
-      }
+  const handleLogin = () => {
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    setLoggedInUser(user);
+    setIsAuthenticated(true);
+  };
 
-      const contentType = response.headers.get('content-type');
-      if (!contentType || !contentType.includes('application/json')) {
-        throw new Error(`Expected JSON, but received ${contentType}`);
-      }
+  const handleLogout = () => {
+    localStorage.removeItem('loggedInUser');
+    setLoggedInUser(null);
+    setIsAuthenticated(false);
+  };
 
-      const data = await response.json();
-      console.log('Fetched data:', data);
-      setRecipes(data.recipes);
-      setFilteredRecipes(data.recipes); // Set filteredRecipes to all recipes initially
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setError(error);
-    } finally {
-      setLoading(false);
+  const handleAddRecipe = (recipe) => {
+    setRecipes([...recipes, recipe]);
+    setFilteredRecipes([...recipes, recipe]);
+    setIsFormVisible(false);
+    alert('Recipe Added!');
+  };
+
+  const editRecipe = (updatedRecipe) => {
+    const updatedRecipes = recipes.map(recipe =>
+      recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+    );
+    setRecipes(updatedRecipes);
+    setFilteredRecipes(updatedRecipes);
+    alert('Recipe Updated!');
+  };
+
+  const deleteRecipe = (id) => {
+    const updatedRecipes = recipes.filter(recipe => recipe.id !== id);
+    setRecipes(updatedRecipes);
+    setFilteredRecipes(updatedRecipes);
+    setCurrentRecipeIndex(prevIndex => (prevIndex === recipes.length - 1 ? prevIndex - 1 : prevIndex));
+  };
+
+  const nextRecipe = () => {
+    if (currentRecipeIndex < filteredRecipes.length - 1) {
+      setCurrentRecipeIndex(currentRecipeIndex + 1);
+    }
+  };
+
+  const previousRecipe = () => {
+    if (currentRecipeIndex > 0) {
+      setCurrentRecipeIndex(currentRecipeIndex - 1);
     }
   };
 
   useEffect(() => {
-    fetchData();
+    fetch('/DB.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network Response Error');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const recipesWithIds = data.recipes.map(recipe => ({
+          ...recipe,
+          id: uuidv4(),
+        }));
+        setRecipes(recipesWithIds);
+        setFilteredRecipes(recipesWithIds);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error Fetching Data:', error);
+        setError(error);
+        setLoading(false);
+      });
   }, []);
 
-  const handleSearch = (e) => {
-    const newSearchQuery = e.target.value.toLowerCase();
-    setSearch(newSearchQuery);
-    filterRecipes(newSearchQuery, selectedCategory);
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-    filterRecipes(search, category);
-  };
-
-  const filterRecipes = (searchQuery, category) => {
-    let filtered = recipes;
-
-    if (category !== 'All') {
-      filtered = filtered.filter((recipe) => recipe.category === category);
+  const handleSearchClick = () => {
+    const results = recipes.filter(recipe =>
+      recipe.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    if (results.length === 0) {
+      alert('Recipe Not Found/Added Yet.');
     }
-
-    if (searchQuery) {
-      filtered = filtered.filter(
-        (recipe) =>
-          recipe.name.toLowerCase().includes(searchQuery) ||
-          recipe.ingredients.join('').toLowerCase().includes(searchQuery)
-      );
-    }
-
-    setFilteredRecipes(filtered);
-    setCurrentPage(1); // Reset to first page on new search or category change
+    setFilteredRecipes(results);
+    setCurrentRecipeIndex(0);
   };
-
-  const indexOfFirstRecipe = (currentPage) => {
-    return (currentPage - 1) * recipesPerPage;
-  };
-
-  const indexOfLastRecipe = (currentPage) => {
-    const lastIndex = currentPage * recipesPerPage;
-    return lastIndex > filteredRecipes.length ? filteredRecipes.length : lastIndex;
-  };
-
-  const handleNextClick = () => {
-    const newPage = Math.min(currentPage + 1, Math.ceil(filteredRecipes.length / recipesPerPage));
-    setCurrentPage(newPage);
-  };
-
-  const handlePrevClick = () => {
-    setCurrentPage(Math.max(currentPage - 1, 1));
-  };
-
-  const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe(currentPage), indexOfLastRecipe(currentPage));
 
   if (loading) {
     return <div>Loading...</div>;
@@ -100,49 +120,53 @@ const App = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  if (filteredRecipes.length === 0 || !filteredRecipes.some((recipe) => Object.keys(recipe).length > 0)) {
-    return <div>No recipes available.</div>;
-  }
-
   return (
-    <div className="app">
-      <h1>Recipe Book</h1>
-
-      <div className='search-bar'>
-        <input type='text' placeholder='Search recipes' value={search} onChange={handleSearch} />
+    <Router>
+      <div className="app">
+        {isAuthenticated ? (
+          <>
+            <div className="logo-container">
+              <video className="logo-video" autoPlay loop muted>
+                <source src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/meal-8820888-7140050.mp4" type="video/mp4" />
+                Need a better browser.
+              </video>
+            </div>
+            <h1>Recipe Book</h1>
+            <div className="user-info">
+              <p>Welcome, {loggedInUser?.username || 'User'}!</p>
+            </div>
+            <div className="buttons-container">
+              <button onClick={handleLogout}>Logout</button>
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search recipes"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className="search-input"
+                />
+                <button className="search-button" onClick={handleSearchClick}>Search</button>
+              </div>
+              <button onClick={previousRecipe} disabled={currentRecipeIndex === 0}>Back</button>
+              <button onClick={nextRecipe} disabled={currentRecipeIndex === filteredRecipes.length - 1}>Next</button>
+            </div>
+            {filteredRecipes.length > 0 && !isFormVisible && (
+              <Recipe
+                recipe={filteredRecipes[currentRecipeIndex]}
+                onEdit={editRecipe}
+                onDelete={deleteRecipe}
+              />
+            )}
+          </>
+        ) : (
+          <Routes>
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/register" element={<Register onRegister={handleLogin} />} />
+            <Route path="*" element={<Navigate to="/login" />} />
+          </Routes>
+        )}
       </div>
-
-      {currentRecipes.length >0 && (
-      <div className='category-select'>
-          <label>Select Category: </label>
-          <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)}>
-            <option value="All">All</option>
-            <option value="Breakfast">Breakfast</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Dinner">Dinner</option>
-            <option value="Dessert">Dessert</option>
-            <option value="Snacks">Snacks</option>
-          </select>
-          {currentRecipes.map((recipe, index) => (
-      <Recipe key={index} recipe={recipe} />
-    ))}
-        </div>
-        )}<div className="recipes-list">
-            {currentRecipes.map((recipe, index) => (
-              <Recipe key={index} recipe={recipe} />
-            ))}
-          </div>
-      
-
-      <div className="pagination">
-        <button className='btn' disabled={currentPage === 1} onClick={handlePrevClick}>
-          Previous
-        </button>
-        <button className='btn' disabled={currentPage === Math.ceil(filteredRecipes.length / recipesPerPage)} onClick={handleNextClick}>
-          Next
-        </button>
-      </div>
-    </div>
+    </Router>
   );
 };
 
