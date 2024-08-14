@@ -1,10 +1,4 @@
-.app {
-  text-align: left;
-  background-color:transparent;
-  display: flex;
-  flex-direction: column;
- 
-}
+
 
 
 .btn{
@@ -24,3 +18,19 @@
   height: 150px;
 }
  
+.search-container{
+  width: 100%;
+  padding-left: 984px;
+  padding-top: px;
+}
+
+.buttons-container{
+  display: flex;
+  background-color: transparent;
+}
+
+.classy{
+  display: flex;
+  justify-content: space-between;
+
+}

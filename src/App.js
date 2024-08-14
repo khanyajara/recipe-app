@@ -5,6 +5,7 @@ import Register from './components/register';
 import Recipe from './recipe';
 import './App.css';
 import { v4 as uuidv4 } from 'uuid';
+import Categories from './components/categories';
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -121,23 +122,22 @@ const App = () => {
   }
 
   return (
-    <Router>
-      <div className="app">
-        {isAuthenticated ? (
-          <><div></div>
-            <div className="logo-container">
-              <video className="logo-video" autoPlay loop muted>
-                <source src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/meal-8820888-7140050.mp4" type="video/mp4" />
+    <Router className='column'>
+      <div className="app"><video className="logo-video" autoPlay loop muted>
+                <source src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/meal-8820888-7140050.mp4" type="video/mp4" /><h1>My Personal Chef</h1>
                 Need a better browser.
-              </video>
-            </div>
-            <h1>My Personal Chef</h1>
-            <div className="user-info">
-              <p>Welcome, {loggedInUser?.username || 'User'}!</p>
-            </div>
-            <div className="buttons-container">
-              <button onClick={handleLogout}>Logout</button>
-              <div className="search-container">
+              </video> <div className='classy'>
+                <div className="user-info">
+                <h3>Welcome, {loggedInUser?.username || 'User'}!</h3>
+                            </div><div><button onClick={handleLogout}>Logout</button></div>
+              </div>
+        
+        <div class="header">
+  <h2>My Personal Chef</h2>
+</div>
+        {isAuthenticated ? (
+          <>
+            <div className="logo-container"> <div className="search-container">
                 <input
                   type="text"
                   placeholder="Search recipes"
@@ -147,6 +147,11 @@ const App = () => {
                 />
                 <button className="search-button" onClick={handleSearchClick}>Search</button>
               </div>
+              
+            </div>
+            
+           
+            <div className="buttons-container">
               <button onClick={previousRecipe} disabled={currentRecipeIndex === 0}>Back</button>
               <button onClick={nextRecipe} disabled={currentRecipeIndex === filteredRecipes.length - 1}>Next</button>
             </div>
@@ -165,6 +170,7 @@ const App = () => {
             <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         )}
+        
       </div>
     </Router>
   );

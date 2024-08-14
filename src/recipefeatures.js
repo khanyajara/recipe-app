@@ -3,7 +3,7 @@ import RecipeComponent from './RecipeComponent';
 
 const RecipeFeatures = () => {
     const [recipes, setRecipes] = useState([]);
-    const [search, setSearch] = useState('');
+    
     const [filteredRecipes, setFilteredRecipes] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [loading, setLoading] = useState(true);
@@ -44,23 +44,7 @@ const RecipeFeatures = () => {
         filterRecipes(search, category);
     };
 
-    const filterRecipes = (searchQuery, category) => {
-        let filtered = recipes;
-
-        if (category !== 'All') {
-            filtered = filtered.filter((recipe) => recipe.category === category);
-        }
-
-        if (searchQuery) {
-            filtered = filtered.filter((recipe) =>
-                recipe.name.toLowerCase().includes(searchQuery) ||
-                recipe.ingredients.join(' ').toLowerCase().includes(searchQuery)
-            );
-        }
-
-        setFilteredRecipes(filtered);
-        setCurrentPage(1);
-    };
+    
 
     const indexOfFirstRecipe = (currentPage) => {
         return (currentPage - 1) * recipesPerPage;

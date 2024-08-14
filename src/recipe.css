@@ -1,43 +1,7 @@
-body{
-  justify-content: center;
-  align-items: center;
-}
-.recipe {
-    border: 1px solid #f5cfcf;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 50px; /* Add some spacing between recipes */
-    width: 595px;
-    margin-left: 55px;
-    
-  }
+
+ 
   
-  .recipe h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
   
-  .recipe img {
-    max-width: 100%;
-    height: auto; /* Maintain image aspect ratio */
-    margin-bottom: 10px;
-  }
-  
-  .recipe ul,
-  .recipe ol {
-    margin: 0;
-    padding: 0;
-     /* Remove default list styling */
-  }
-  
-  .recipe li {
-    margin-bottom: 5px;
-  }
-  
-  /* Optional styles for ingredients and instructions */
-  .recipe h3 {
-    margin-bottom: 10px;
-  }
   
  
 button {
@@ -127,7 +91,7 @@ button {
   align-items: center;
   padding: 1em;
   border: 0px solid transparent;
-  background-color: rgba(3, 162, 236, 0.877);
+  background-color: transparent;
   border-radius: 1.25em;
   transition: all 0.2s linear;
   
@@ -250,4 +214,115 @@ button {
 .search-bar{
   align-items: center;
   margin-left: 596px;
+}
+
+
+
+
+
+.scroll-button{
+  margin-left: 525px;
+}
+.showbtn{
+  height: 32px;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Add a gray background color with some padding */
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+  width: 1200px;
+  margin-left: 355px;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #f5f3f3;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}.leftcolumn::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.leftcolumn::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+.leftcolumn::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+.leftcolumn::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.category-select{
+  display: flex;
+  justify-items: stretch;
+  width: 220px;
+  flex-direction: column;
+  border: none;
+  background-color: transparent;
+}
+.cat-btn{
+  background-color:transparent;
 }
