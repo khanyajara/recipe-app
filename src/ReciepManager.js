@@ -6,7 +6,7 @@ import Recipe from './Recipe';
 const RecipeManager = () => {
     const [recipes, setRecipes] = useState([]);
     const [filteredRecipes, setFilteredRecipes] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [selectedCategory, setSelectedCategory] = useState('null');
 
     useEffect(() => {
         // Fetch your recipes from your data source
