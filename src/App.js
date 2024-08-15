@@ -129,7 +129,8 @@ const App = () => {
               </video> <div className='classy'>
                 <div className="user-info">
                 <h3>Welcome, {loggedInUser?.username || 'User'}!</h3>
-                            </div><div><button onClick={handleLogout}>Logout</button></div>
+                            </div><div>
+                              <button onClick={handleLogout}>Logout</button></div>
               </div>
         
         <div class="header">

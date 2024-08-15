@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Css from './login.css'
 
 
 const Login = ({ onLogin }) => {
@@ -23,22 +24,22 @@ const Login = ({ onLogin }) => {
   return (
     <div className="auth-container">
       <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
+      <form className='space' onSubmit={handleLogin}>
+        <input className='form'
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         /><br/>
-        <input
+        <input className='form'
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button className='btn2' type="submit">Login</button>
       </form>
       <div className="link-container">
         <p>New User? <Link to="/register">Register here</Link></p>

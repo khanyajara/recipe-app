@@ -25,14 +25,14 @@ const Register = ({ onRegister }) => {
   return (
     <div className="auth-container">
       <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <input type="text" placeholder="Username"
+      <form className='space' onSubmit={handleRegister}>
+        <input className='form' type="text" placeholder="Username"
           value={username} onChange={(e) => setUsername(e.target.value)}
           required/><br/>
-        <input type="password" placeholder="Password"
+        <input className='form' type="password" placeholder="Password"
           value={password} onChange={(e) => setPassword(e.target.value)}
           required/>
-        <button type="submit">Register</button>
+        <button className='btn2' type="submit">Register</button>
       </form>
       <div className="link-container">
         <p>Already registered? <Link to="/login">Login</Link></p>
