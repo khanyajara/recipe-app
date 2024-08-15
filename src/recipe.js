@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Css from "./recipe.css";
 import Categories from './components/categories';
+import RecipeFeatures from './recipefeatures';
 
 const Recipe = ({ recipe }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +28,7 @@ const [isAuthenticated, setIsAuthenticated] = useState(false);
 const [loggedInUser, setLoggedInUser] = useState(null);
 const [filteredRecipes, setFilteredRecipes] = useState([]);
 const [recipesPerPage] = useState(2);
+
 
 
   useEffect(() => {

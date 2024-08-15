@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 const Categories = () => {
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('');
-    const [filteredRecipes, setFilteredRecipes] = useState([]);
+    const [filteredRecipe, setFilteredRecipe] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -21,7 +21,7 @@ const Categories = () => {
 
             const data = await response.json();
             setRecipes(data.recipes);
-            setFilteredRecipes(data.recipes);
+            setFilteredRecipe(data.recipes);
         } catch (error) {
             setError(error);
         } finally {
@@ -37,17 +37,25 @@ const Categories = () => {
         const filtered = recipes.filter(recipe =>
             selectedCategory === 'All' || recipe.category === selectedCategory
         );
-        setFilteredRecipes(filtered);
+        setFilteredRecipe(filtered);
         setCurrentPage(1);
     }, [selectedCategory, recipes]);
 
+    const filteredRecipes= (event, category) => {
+        const searchQuery = event.target.value;
+        setSearch(searchQuery);
+        filteredRecipes(searchQuery, selectedCategory);
+    };
+
     const handleCategoryChange = (category) => {
+
+        return (event)=>{
         setSelectedCategory(category);
+        filteredRecipes(event, category);}
     };
 
     const indexOfFirstRecipe = (currentPage) => (currentPage - 1) * recipesPerPage;
     const indexOfLastRecipe = (currentPage) => Math.min(currentPage * recipesPerPage, filteredRecipes.length);
-    const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe(currentPage), indexOfLastRecipe(currentPage));
 
     if (loading) {
         return <div>Loading...</div>;
@@ -63,8 +71,8 @@ const Categories = () => {
 
     return (
         <div className="">
-            <div className='category-select'>
-                <button className="cat-btn" onClick={() => handleCategoryChange('All')}>All</button>
+            <div className='category-select' >
+                <button className="cat-btn" onClick={() => handleCategoryChange('all')}>All</button>
                 <button className="cat-btn" onClick={() => handleCategoryChange('breakFast')}>Breakfast</button>
                 <button className="cat-btn" onClick={() => handleCategoryChange('Lunch')}>Lunch</button>
                 <button className="cat-btn" onClick={() => handleCategoryChange('Brunch')}>Brunch</button>

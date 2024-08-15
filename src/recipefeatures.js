@@ -10,6 +10,7 @@ const RecipeFeatures = () => {
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [recipesPerPage] = useState(2);
+    const [search, setSearch] = useState('');
 
     const fetchData = async () => {
         try {
@@ -36,12 +37,12 @@ const RecipeFeatures = () => {
     const handleSearch = (e) => {
         const searchQuery = e.target.value.toLowerCase();
         setSearch(searchQuery);
-        filterRecipes(searchQuery, selectedCategory);
+        filteredRecipes(searchQuery, selectedCategory);
     };
 
     const handleCategoryChange = (category) => {
         setSelectedCategory(category);
-        filterRecipes(search, category);
+        filteredRecipes(search, category);
     };
 
     
@@ -79,11 +80,7 @@ const RecipeFeatures = () => {
 
     return (
         <div className="app">
-            <h1>Recipe Book</h1>
-
-            <div className='search-bar'>
-                <input type='text' placeholder='Search recipes' value={search} onChange={handleSearch} />
-            </div>
+            
 
             <div className='category-select'>
                 <label>Select Category: </label>
