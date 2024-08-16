@@ -336,6 +336,7 @@ body {
   flex-direction: column;
   border: none;
   background-color: transparent;
+  margin-left: -50px;
 }
 .cat-btn{
   background-color:transparent;
@@ -432,4 +433,8 @@ body {
 .card .card__content .card__describe {
   color: #fff;
   font-size: 16px;
+}
+
+.cat{
+  color: white;
 }

@@ -11,7 +11,7 @@ const Categories = () => {
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [recipesPerPage] = useState(2);
-    const scrollRef = useRef(null);
+   
 
     // Fetch data from the server
     const fetchData = async () => {
@@ -62,7 +62,8 @@ const Categories = () => {
         const searchQuery = event.target.value.toLowerCase();  // Convert search query to lowercase for case-insensitive search
         setSearch(searchQuery);
 
-        // Filter recipes based on search query and selected category
+        
+        
         const filtered = recipes.filter(recipe =>
             (selectedCategory === 'All' || recipe.category === selectedCategory) 
           
@@ -71,10 +72,14 @@ const Categories = () => {
         setCurrentPage(1);  // Reset to first page when search changes
     };
 
-    // Fixed handleCategoryChange to directly update category
-    const handleCategoryChange = (category) => {
-        setSelectedCategory(category);  // Update selected category
-    };
+    
+   const Category = (category)=>{
+    const filtered = recipes.filter(recipe => recipe.category ===category);
+    setFilteredRecipe(filtered);
+    setCurrentPage(1);  // Reset to first page when category changes
+
+
+   }
 
     // Fixed pagination logic
     const indexOfFirstRecipe = (currentPage - 1) * recipesPerPage;
@@ -97,33 +102,20 @@ const Categories = () => {
         <div>
             <div className='category-select'>
                 
-                <button className="cat-btn" onClick={() => handleCategoryChange('All')}>All</button>
-                <button className="cat-btn" onClick={() => handleCategoryChange('Breakfast')}>Breakfast</button>
-                <button className="cat-btn" onClick={() => handleCategoryChange('Lunch')}>Lunch</button>
-                <button className="cat-btn" onClick={() => handleCategoryChange('Brunch')}>Brunch</button>
-                <button className="cat-btn" onClick={() => handleCategoryChange('Snacks')}>Snacks</button>
-                <button className="cat-btn" onClick={() => handleCategoryChange('Dinner/Main')}>Dinner/Main</button>
-                <button className="cat-btn" onClick={() => handleCategoryChange('Dessert')}>Dessert</button>
-                <button className="cat-btn" onClick={() => handleCategoryChange('Appetizers')}>Appetizers</button>
+                <button className="cat-btn" onClick={(e) => Category ('All')}>All</button>
+                <button className="cat-btn" onClick={(e) => Category ('Breakfast')}>Breakfast</button>
+                <button className="cat-btn" onClick={(e) => Category('Lunch')}>Lunch</button>
+                <button className="cat-btn" onClick={(e) => Category ('Brunch')}>Brunch</button>
+                <button className="cat-btn" onClick={(e) => Category('Snacks')}>Snacks</button>
+                <button className="cat-btn" onClick={(e) => Category('Dinner/Main')}>Dinner/Main</button>
+                <button className="cat-btn" onClick={(e) => Category('Dessert')}>Dessert</button>
+                <button className="cat-btn" onClick={(e) => Category('Appetizers')}>Appetizers</button>
             </div>
 
            
-            <input
-                type="text"
-                placeholder="Search recipes..."
-                value={search}
-                onChange={handleSearch}
-            />
+           
 
-            
-            <div>
-                {currentRecipes.map((recipe, index) => (
-                    <div key={index}>
-                        <h3>{recipe.name}</h3>
-                        <p>{recipe.category}</p>
-                    </div>
-                ))}
-            </div>
+           
 
             <div>
                 <button
