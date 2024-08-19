@@ -285,6 +285,7 @@ body {
    padding: 20px;
    margin-top: 20px;
    margin-left: 25px;
+   width: 25px;
 }
 
 /* Clear floats after the columns */
@@ -336,7 +337,7 @@ body {
   flex-direction: column;
   border: none;
   background-color: transparent;
-  margin-left: -9px;
+  margin-left: -50px;
 }
 .cat-btn{
   background-color:transparent;

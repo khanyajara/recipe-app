@@ -18,6 +18,7 @@ const Recipe = ({ loggedInUser }) => {
   const [editingIndex, setEditingIndex] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -100,7 +101,9 @@ const Recipe = ({ loggedInUser }) => {
     setShowForm(true);
   };
 
-  
+  const MyDropdown =()=>{
+    setIsOpen(!isOpen)
+  }
 
   if (isLoading) {
     return <p>Loading recipes...</p>;
@@ -118,13 +121,19 @@ const Recipe = ({ loggedInUser }) => {
             <div className="card" key={index}>
               <div className="fakeimg"><img src={recipe.image} alt={recipe.name} /></div>
               <div className="card__content">
-                <h3>{recipe.name}</h3>
-                <p>Ingredients: <br /> {recipe.ingredients.join(',')}</p>
-                <p>Instructions: <br /> {recipe.instructions.join('.')}</p>
-                <p>Servings: <br /> {recipe.recipeServings}</p>
-                <p>Category: <br /> {recipe.category}</p>
-                <button onClick={() => deleteRecipe(index)}>Delete</button>
-                <button onClick={() => startEditRecipe(index)}>Edit</button>
+              <div className="dropdown">   
+
+<button   className='another-btn'
+onClick={MyDropdown}>{recipe.name}</button>
+{isOpen && (
+  <ul className="dropdown-menu">
+    <p>Ingredients: <br /> {recipe.ingredients.join(',')}</p>
+     <p>Instructions: <br /> {recipe.instructions.join('.')}</p>
+     <p>Servings: <br /> {recipe.recipeServings}</p>
+     <p>Category: <br /> {recipe.category}</p>
+  </ul>
+)}
+</div>
               </div>
             </div>
           ))}

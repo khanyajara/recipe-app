@@ -117,7 +117,7 @@ const Categories = () => {
 
            
 
-            <div>
+            <div className="myBtns"  >
                 <button
                     onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                     disabled={currentPage === 1}
