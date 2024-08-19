@@ -133,7 +133,9 @@ onClick={MyDropdown}>{recipe.name}</button>
      <p>Category: <br /> {recipe.category}</p>
   </ul>
 )}
-</div>
+</div> <button  onClick={()=>deleteRecipe(index
+  )}>delete</button>
+       <button onClick={()=>startEditRecipe(index)} >Edit </button>
               </div>
             </div>
           ))}

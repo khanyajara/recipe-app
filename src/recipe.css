@@ -253,7 +253,7 @@ body {
 /* Left column */
 .leftcolumn {   
   float: left;
-  width: 75%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   
@@ -267,7 +267,7 @@ body {
   float: right;
   width: 25%;
   padding-left: 20px;
-  margin-top: -630px;
+  margin-top: -430px;
  
  
 }
@@ -285,7 +285,8 @@ body {
    padding: 20px;
    margin-top: 20px;
    margin-left: 25px;
-   width: 25px;
+   
+  
 }
 
 /* Clear floats after the columns */
@@ -337,7 +338,7 @@ body {
   flex-direction: column;
   border: none;
   background-color: transparent;
-  margin-left: -50px;
+  margin-left: -10px;
 }
 .cat-btn{
   background-color:transparent;
@@ -376,8 +377,11 @@ body {
   flex: 0 0 100%;
   overflow: hidden;
   border-radius: 8px;
-  background-color: #141414;
+  background-color: #000000;
   scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  width: 55%;
 }
 
 .card .card__image {
@@ -423,6 +427,7 @@ body {
   flex-direction: column;
   gap: 10px;
   padding: 20px;
+  width: 55%;
 }
 
 .card .card__content .card__title {
@@ -438,4 +443,8 @@ body {
 
 .cat{
   color: white;
+}
+.myBtns{
+  display: flex;
+  gap: 2.88rem;
 }
