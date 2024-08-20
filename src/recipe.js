@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Css from "./recipe.css";
 import Categories from './components/categories';
 import axios from 'axios';
+import UserInfo from './userInfo';
 
 const Recipe = ({ loggedInUser }) => {
   const [recipes, setRecipes] = useState([]);
@@ -105,6 +106,15 @@ const Recipe = ({ loggedInUser }) => {
     setIsOpen(!isOpen)
   }
 
+  const openNav=()=>{
+    document.getElementById('myNav')
+
+  }
+
+  const closeNav=()=>{
+    document.getElementById('myNav')
+  }
+
   if (isLoading) {
     return <p>Loading recipes...</p>;
   }
@@ -142,8 +152,11 @@ onClick={MyDropdown}>{recipe.name}</button>
         </div>
         <div className="rightcolumn">
           <div className="card">
-            <h4>Welcome, {loggedInUser?.username}</h4>
-            <p>Let's get cooking</p>
+          <button onClick={toggleFormVisibility} className='showbtn'>
+              {showForm ? 'Hide Form' : 'Show Form'}
+            </button>
+            {showForm && ( <UserInfo user={loggedInUser}/>  )}
+            <button>Profile</button>
           </div>
           <div className="card">
             <h3>New Recipe</h3>

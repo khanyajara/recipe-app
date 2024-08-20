@@ -6,6 +6,7 @@ import Recipe from './recipe';
 import './App.css';
 import { v4 as uuidv4 } from 'uuid';
 import Categories from './components/categories';
+import UserInfo from './userInfo';
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -39,12 +40,7 @@ const App = () => {
     setIsAuthenticated(false);
   };
 
-  const handleAddRecipe = (recipe) => {
-    setRecipes([...recipes, recipe]);
-    setFilteredRecipes([...recipes, recipe]);
-    setIsFormVisible(false);
-    alert('Recipe Added!');
-  };
+  
 
   const editRecipe = (updatedRecipe) => {
     const updatedRecipes = recipes.map(recipe =>
