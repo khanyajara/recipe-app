@@ -6,7 +6,7 @@ import Recipe from './recipe';
 import './App.css';
 import { v4 as uuidv4 } from 'uuid';
 import Categories from './components/categories';
-import UserInfo from './userInfo';
+import UserInfo from './components/userInfo';
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -100,7 +100,7 @@ const App = () => {
 
   const handleSearchClick = () => {
     const results = recipes.filter(recipe =>
-      recipe.name.toLowerCase().includes(searchQuery.toLowerCase())
+      recipe.name.toLowerCase().includes(searchQuery.toLowerCase()) 
     );
     if (results.length === 0) {
       alert('Recipe Not Found/Added Yet.');

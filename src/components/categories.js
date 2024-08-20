@@ -16,25 +16,22 @@ const Categories = () => {
     // Fetch data from the server
     const fetchData = async () => {
         try {
-            const response = await fetch('/db.json');
-            const response2 = await fetch('/db2.json')
+            const response = await fetch('/db.json',{Category});
+           //const response2 = await fetch('/db2.json')
             
 
             if (!response.ok) {
                 // Handle network errors properly
                 throw new Error(`Network response error: ${response.status} ${response.statusText}`);
             }
-            if (!response2.ok) {
-                // Handle network errors properly
-                throw new Error(`Network response error: ${response2.status} ${response2.statusText}`);
-            }
+           
 
             const data = await response.json();
-            const data2 = await response2.json();
+            //const data2 = await response2.json();
             setRecipe(data.recipes);
             setFilteredRecipe(data.recipes);
-            setRecipe(data2.recipe);
-            setFilteredRecipes(data2.recipe)
+            //setRecipe(data2.recipe);
+            //setFilteredRecipes(data2.recipe)
             
             
               
@@ -102,14 +99,14 @@ const Categories = () => {
         <div>
             <div className='category-select'>
                 
-                <button className="cat-btn" onClick={(e) => Category ('All')}>All</button>
-                <button className="cat-btn" onClick={(e) => Category ('Breakfast')}>Breakfast</button>
-                <button className="cat-btn" onClick={(e) => Category('Lunch')}>Lunch</button>
-                <button className="cat-btn" onClick={(e) => Category ('Brunch')}>Brunch</button>
-                <button className="cat-btn" onClick={(e) => Category('Snacks')}>Snacks</button>
-                <button className="cat-btn" onClick={(e) => Category('Dinner/Main')}>Dinner/Main</button>
-                <button className="cat-btn" onClick={(e) => Category('Dessert')}>Dessert</button>
-                <button className="cat-btn" onClick={(e) => Category('Appetizers')}>Appetizers</button>
+                <button className="cat-btn" onClick={() =>  setCurrentPage ('All')}>All</button>
+                <button className="cat-btn" onClick={() =>  setCurrentPage('Breakfast')}>Breakfast</button>
+                <button className="cat-btn" onClick={() =>  setCurrentPage('Lunch')}>Lunch</button>
+                <button className="cat-btn" onClick={() =>  setCurrentPage ('Brunch')}>Brunch</button>
+                <button className="cat-btn" onClick={() =>  setCurrentPage('Snacks')}>Snacks</button>
+                <button className="cat-btn" onClick={() =>  setCurrentPage('Dinner/Main')}>Dinner/Main</button>
+                <button className="cat-btn" onClick={() =>  setCurrentPage('Dessert')}>Dessert</button>
+                <button className="cat-btn" onClick={() =>  setCurrentPage('Appetizers')}>Appetizers</button>
             </div>
 
            

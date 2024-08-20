@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Css from "./recipe.css";
 import Categories from './components/categories';
 import axios from 'axios';
-import UserInfo from './userInfo';
+import UserInfo from './components/userInfo';
+import UserProfile from './components/UserProfile';
 
 const Recipe = ({ loggedInUser }) => {
   const [recipes, setRecipes] = useState([]);
@@ -20,21 +21,23 @@ const Recipe = ({ loggedInUser }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
+  const [userInfo, setUserInfo] = useState(loggedInUser); 
+  const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
+  const [filteredRecipes,setFilteredRecipes]=useState()
+  const [currentRecipes,setCurrentRecipes]=useState()
 
   const fetchData = async () => {
     try {
-      const [response1 ] = await Promise.all([
+      const [response1] = await Promise.all([
         fetch('/db.json'),
-       
       ]);
 
-      if (!response1.ok ) {
+      if (!response1.ok) {
         throw new Error('Network response error');
       }
 
       const data1 = await response1.json();
-    
-
       setRecipes([...data1.recipes]);
     } catch (error) {
       setError(error);
@@ -51,7 +54,7 @@ const Recipe = ({ loggedInUser }) => {
     const { name, value, type, checked } = e.target;
     setRecipeData({
       ...recipeData,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? checked : value,
     });
   };
 
@@ -60,7 +63,7 @@ const Recipe = ({ loggedInUser }) => {
     const newRecipe = {
       ...recipeData,
       ingredients: recipeData.ingredients.split(','),
-      instructions: recipeData.instructions.split('.')
+      instructions: recipeData.instructions.split('.'),
     };
 
     if (editingIndex !== null) {
@@ -102,18 +105,33 @@ const Recipe = ({ loggedInUser }) => {
     setShowForm(true);
   };
 
-  const MyDropdown =()=>{
-    setIsOpen(!isOpen)
-  }
+  const MyDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
-  const openNav=()=>{
-    document.getElementById('myNav')
+  const openNav = () => {
+    document.getElementById('myNav');
+  };
 
-  }
+  const closeNav = () => {
+    document.getElementById('myNav');
+  };
 
-  const closeNav=()=>{
-    document.getElementById('myNav')
+  const updateUserInfo = (newUserInfo) => {
+    setUserInfo(newUserInfo); // Update user information
+  };
+ 
+  const indexOfFirstRecipe=(currentPage) =>{
+    return (currentPage-1)*5;
   }
+  const indexOfLastRecipe=(currentPage)=>{
+    return currentPage*5;
+ }
+ const paginateRecipes=(recipes,currentPage)=>{
+  const indexOfFirst=indexOfFirstRecipe(currentPage);
+  const indexOfLast=indexOfLastRecipe(currentPage);
+ }
+ 
 
   if (isLoading) {
     return <p>Loading recipes...</p>;
@@ -126,37 +144,70 @@ const Recipe = ({ loggedInUser }) => {
   return (
     <div className='columns'>
       <div className="row">
-        <div className="container scroll-1">
-          {recipes.map((recipe, index) => (
-            <div className="card" key={index}>
-              <div className="fakeimg"><img src={recipe.image} alt={recipe.name} /></div>
-              <div className="card__content">
-              <div className="dropdown">   
-
-<button   className='another-btn'
-onClick={MyDropdown}>{recipe.name}</button>
-{isOpen && (
-  <ul className="dropdown-menu">
-    <p>Ingredients: <br /> {recipe.ingredients.join(',')}</p>
-     <p>Instructions: <br /> {recipe.instructions.join('.')}</p>
-     <p>Servings: <br /> {recipe.recipeServings}</p>
-     <p>Category: <br /> {recipe.category}</p>
-  </ul>
-)}
-</div> <button  onClick={()=>deleteRecipe(index
-  )}>delete</button>
-       <button onClick={()=>startEditRecipe(index)} >Edit </button>
+        <div className='leftcolumn' >
+          <div className="recipessss">
+            {recipes.map((recipe, index) => (
+              <div className="card" key={index}>
+                <div className='sizeForCard'>
+               <div className="fakeimg"><img src={recipe.image} alt={recipe.name} /></div>
+                  <div className="card__content">
+                    <div className="dropdown">
+                      <button className='another-btn' onClick={MyDropdown}>{recipe.name}</button>
+                      {isOpen && (
+                        <ul className="dropdown-menu">
+                          <div className='recipeInfo'>
+                            <p>Ingredients: <br /> {recipe.ingredients.join(',')}</p>
+                            <p>Instructions: <br /> {recipe.instructions.join('.')}</p>
+                            <p>Servings: <br /> {recipe.recipeServings}</p>
+                            <p>Category: <br /> {recipe.category}</p>
+                          </div>
+                        </ul>
+                      )}
+                    </div>
+                    <button className='btn1' onClick={() => deleteRecipe(index)}>delete</button>
+                    <button className='btn1' onClick={() => startEditRecipe(index)}>Edit</button>
+                  </div>
+                 
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          
+          <div className="container scroll-1">
+            {recipes.map((recipe, index) => (
+              <div className="card" key={index}>
+                <div className='sizeForCard'>
+               <div className="fakeimg"><img src={recipe.image} alt={recipe.name} /></div>
+                  <div className="card__content">
+                    <div className="dropdown">
+                      <button className='another-btn' onClick={MyDropdown}>{recipe.name}</button>
+                      {isOpen && (
+                        <ul className="dropdown-menu">
+                          <div className='recipeInfo'>
+                            <p>Ingredients: <br /> {recipe.ingredients.join(',')}</p>
+                            <p>Instructions: <br /> {recipe.instructions.join('.')}</p>
+                            <p>Servings: <br /> {recipe.recipeServings}</p>
+                            <p>Category: <br /> {recipe.category}</p>
+                          </div>
+                        </ul>
+                      )}
+                    </div>
+                    <button className='btn1' onClick={() => deleteRecipe(index)}>delete</button>
+                    <button className='btn1' onClick={() => startEditRecipe(index)}>Edit</button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="rightcolumn">
           <div className="card">
-          <button onClick={toggleFormVisibility} className='showbtn'>
-              {showForm ? 'Hide Form' : 'Show Form'}
+            
+            {showForm && <UserInfo user={userInfo} updateUser={updateUserInfo} />}
+            <button onClick={() => setShowProfile(!showProfile)}>
+              {showProfile ? 'Hide Profile' : 'Show Profile'}
             </button>
-            {showForm && ( <UserInfo user={loggedInUser}/>  )}
-            <button>Profile</button>
+            {showProfile && <UserProfile user={userInfo} />}
           </div>
           <div className="card">
             <h3>New Recipe</h3>

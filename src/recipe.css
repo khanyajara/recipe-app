@@ -132,7 +132,7 @@ button {
   margin-top: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: transparent rgba(0, 0, 0, 0.253) transparent transparent;
+  border-color: transparent rgba(161, 82, 82, 0.253) transparent transparent;
  }
  
  .tooltip:hover .tooltiptext {
@@ -237,6 +237,7 @@ body {
   background: #f1f1f1;
   width: 1200px;
   margin-left: 275px;
+  color: black;
 }
 
 /* Header/Blog Title */
@@ -253,7 +254,7 @@ body {
 /* Left column */
 .leftcolumn {   
   float: left;
-  width: 55%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   
@@ -267,16 +268,18 @@ body {
   float: right;
   width: 25%;
   padding-left: 20px;
-  margin-top: -430px;
+  margin-top: 30px;
  
  
 }
 
 /* Fake image */
 .fakeimg {
-  background-color: #f5f3f3;
-  width: 100%;
+  background-color: #c53838;
+  width: 10%;
   padding: 20px;
+  justify-items: center;
+  margin-left: 25px;
 }
 
 /* Add a card effect for articles */
@@ -285,6 +288,7 @@ body {
    padding: 20px;
    margin-top: 20px;
    margin-left: 25px;
+   
    
   
 }
@@ -344,7 +348,7 @@ body {
   background-color:transparent;
 }
 
-/* From Uiverse.io by eduardo-amaro-maciel */ 
+
 .scroll-1::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -359,7 +363,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  color: #fff;
+  width: 500px;
 }
 
 .container {
@@ -371,13 +375,19 @@ body {
   scroll-padding-top: 24px;
   border-radius: 8px;
   gap: 20px;
+  color: black;
+  width: 500px;
+  margin-left: 200px;
+  
+  
 }
 
 .container .card {
   flex: 0 0 100%;
   overflow: hidden;
   border-radius: 8px;
-  background-color: #000000;
+  color: black;
+  background-color:gray;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
@@ -387,40 +397,9 @@ body {
 .card .card__image {
   flex: 1;
   height: 140px;
+  
 }
 
-.card:nth-child(1) .card__image {
-  background-image: linear-gradient(
-      to right top,
-      #051937, 
-      #004d7a, 
-      #008793, 
-      #00bf72, 
-      #a8eb12
-  );
-}
-
-.card:nth-child(2) .card__image {
-  background-image: linear-gradient(
-    to right top, 
-    #dc09a5, 
-    #ce00b4, 
-    #ba00c5, 
-    #9c00d8, 
-    #6f12eb
-  );
-}
-
-.card:nth-child(3) .card__image {
-  background-image: linear-gradient(
-    to right top, 
-    #dc1009, 
-    #e55f00, 
-    #e49200, 
-    #dac000, 
-    #c7eb12
-  );
-}
 
 .card .card__content {
   display: flex;
@@ -428,21 +407,22 @@ body {
   gap: 10px;
   padding: 20px;
   width: 55%;
+  color: black;
 }
 
 .card .card__content .card__title {
   font-size: 32px;
-  color: #fff;
+  color: black;
   text-transform: capitalize;
 }
 
 .card .card__content .card__describe {
-  color: #fff;
+  color: black;
   font-size: 16px;
 }
 
 .cat{
-  color: white;
+  
 }
 .myBtns{
   display: flex;
@@ -501,4 +481,39 @@ font-family: 'Lato', sans-serif;
   top: 15px;
   right: 35px;
   }
+}
+
+.sizeForCard{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+ 
+
+}
+
+.another-btn{
+  color: black;
+  width: 150px;
+}
+
+.btn1{
+  color: black;
+  justify-items: center;
+  width: 110px;
+}
+
+.dropdown{
+  color: black;
+}
+
+.recipeInfo{
+  color: black;
+}
+
+.card{
+  width: 400px;
+}
+.recipessss{
+  display: flex;
+  flex-direction: column;
 }
