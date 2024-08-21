@@ -138,7 +138,7 @@ const App = () => {
                               <button onClick={handleLogout}>Logout</button></div>
               </div>
         
-        <div class="header">
+        <div className="header">
   <h2>My Personal Chef</h2>
 </div>
         {isAuthenticated ? (
@@ -158,14 +158,14 @@ const App = () => {
             
            
             <div className="buttons-container">
-               </div>
+              
             {filteredRecipes.length > 0 && !isFormVisible && (
               <Recipe
                 recipe={filteredRecipes[currentRecipeIndex]}
                 onEdit={editRecipe}
                 onDelete={deleteRecipe}
               />
-            )}
+            )} </div>
           </>
         ) : (
           <Routes>

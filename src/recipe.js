@@ -159,7 +159,7 @@ const Recipe = ({ loggedInUser }) => {
           <div className="recipessss">
             {recipes.map((recipe, index) => (
               <div className="card" key={index}>
-               { <div className='sizeForCard'>
+                <div className='sizeForCard'>
                <div className="fakeimg"><img src={recipe.image} alt={recipe.name} /></div>
                   <div className="card__content">
                     <div className="dropdown">
@@ -179,7 +179,7 @@ const Recipe = ({ loggedInUser }) => {
                     <button className='btn1' onClick={() => startEditRecipe(index)}>Edit</button>
                   </div>
                  
-                </div>}
+                </div>
               </div>
             ))}
           </div>

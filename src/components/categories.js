@@ -99,14 +99,14 @@ const Categories = () => {
         <div>
             <div className='category-select'>
                 
-                <button className="cat-btn" onClick={() =>  setCurrentPage ('All')}>All</button>
-                <button className="cat-btn" onClick={() =>  setCurrentPage('Breakfast')}>Breakfast</button>
-                <button className="cat-btn" onClick={() =>  setCurrentPage('Lunch')}>Lunch</button>
-                <button className="cat-btn" onClick={() =>  setCurrentPage ('Brunch')}>Brunch</button>
-                <button className="cat-btn" onClick={() =>  setCurrentPage('Snacks')}>Snacks</button>
-                <button className="cat-btn" onClick={() =>  setCurrentPage('Dinner/Main')}>Dinner/Main</button>
-                <button className="cat-btn" onClick={() =>  setCurrentPage('Dessert')}>Dessert</button>
-                <button className="cat-btn" onClick={() =>  setCurrentPage('Appetizers')}>Appetizers</button>
+                <button className="cat-btn" onClick={() =>  Category ('All')}>All</button>
+                <button className="cat-btn" onClick={() =>  Category('Breakfast')}>Breakfast</button>
+                <button className="cat-btn" onClick={() =>  Category('Lunch')}>Lunch</button>
+                <button className="cat-btn" onClick={() =>  Category ('Brunch')}>Brunch</button>
+                <button className="cat-btn" onClick={() =>  Category('Snacks')}>Snacks</button>
+                <button className="cat-btn" onClick={() =>  Category('Dinner/Main')}>Dinner/Main</button>
+                <button className="cat-btn" onClick={() =>  Category('Dessert')}>Dessert</button>
+                <button className="cat-btn" onClick={() =>  Category('Appetizers')}>Appetizers</button>
             </div>
 
            
