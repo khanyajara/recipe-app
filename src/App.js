@@ -18,6 +18,8 @@ const App = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [recipesPerPage,setRecipesPerPage]= useState(4)
+  const [currentPage,setCurrentPage]=useState()
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -58,18 +60,7 @@ const App = () => {
     setCurrentRecipeIndex(prevIndex => (prevIndex === recipes.length - 1 ? prevIndex - 1 : prevIndex));
   };
 
-  const nextRecipe = () => {
-    if (currentRecipeIndex < filteredRecipes.length - 1) {
-      setCurrentRecipeIndex(currentRecipeIndex + 1);
-    }
-  };
-
-  const previousRecipe = () => {
-    if (currentRecipeIndex > 0) {
-      setCurrentRecipeIndex(currentRecipeIndex - 1);
-    }
-  };
-
+  
   useEffect(() => {
     fetch('/DB.json')
       .then(response => {
@@ -108,6 +99,24 @@ const App = () => {
     setFilteredRecipes(results);
     setCurrentRecipeIndex(0);
   };
+
+  const indexOfFirstRecipe=(currentPage)=>{
+    return (currentPage - 1) * recipesPerPage;
+  };
+
+  const indexOfLastRecipe=(currentPage)=>{
+    const lastIndex = currentPage * recipesPerPage;
+    return lastIndex > recipes.length ? recipes.length: lastIndex;
+  };
+
+  const NextPage =()=>{
+    const NewPage = Math.min(currentPage + 1,Math.ceil(recipes.length/recipesPerPage));
+    setCurrentPage(NewPage);
+  };
+  const PrevPage =()=>{
+  setCurrentPage(Math.max(currentPage - 1 ,1));
+  };
+   const currentRecipes= recipes.slice(indexOfFirstRecipe(currentPage),indexOfLastRecipe(currentPage))
 
   if (loading) {
     return <div>Loading...</div>;
@@ -149,9 +158,7 @@ const App = () => {
             
            
             <div className="buttons-container">
-              <button onClick={previousRecipe} disabled={currentRecipeIndex === 0}>Back</button>
-              <button onClick={nextRecipe} disabled={currentRecipeIndex === filteredRecipes.length - 1}>Next</button>
-            </div>
+               </div>
             {filteredRecipes.length > 0 && !isFormVisible && (
               <Recipe
                 recipe={filteredRecipes[currentRecipeIndex]}
