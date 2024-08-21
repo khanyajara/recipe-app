@@ -253,12 +253,19 @@ body {
 /* Create two unequal columns that floats next to each other */
 /* Left column */
 .leftcolumn {   
-  float: left;
-  width: 75%;
   display: flex;
-  flex-direction: column;
-  
+  flex-wrap: wrap;
+  gap: 16px;
+ 
+  align-items: flex-start;
 }
+
+.recipessss,.container{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+}
+
 .column{
   float: left;
   
@@ -268,7 +275,7 @@ body {
   float: right;
   width: 25%;
   padding-left: 20px;
-  margin-top: 30px;
+  margin-top: -3965px;
  
  
 }
@@ -377,7 +384,7 @@ body {
   gap: 20px;
   color: black;
   width: 500px;
-  margin-left: 200px;
+  margin-left: 00px;
   
   
 }
@@ -512,8 +519,4 @@ font-family: 'Lato', sans-serif;
 
 .card{
   width: 400px;
-}
-.recipessss{
-  display: flex;
-  flex-direction: column;
 }
