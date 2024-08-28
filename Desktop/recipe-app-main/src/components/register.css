@@ -1,0 +1,19 @@
+body{ 
+  color: black;
+  border-bottom: #707070;
+}
+  
+.auth-container{
+  --bg-light: #efefef;
+  --bg-dark: #707070;
+  --clr: #58bc82;
+  --clr-alpha: #9c9c9c60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 300px;
+  margin-left: 470px;
+
+}
