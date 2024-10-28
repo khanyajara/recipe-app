@@ -157,10 +157,10 @@ const RecipeApp = ({ loggedInUser }) => {
           {currentRecipes.map((recipe, index) => (
             <div className="recipe-card" key={index}>
               <div className='recipe-image'><img src={recipe.image} alt={recipe.name} /></div>
-              <div className="recipe-content">
+              <div className="recipe-content">{recipe.name}
                 <button className='recipe-btn' onClick={() => {
                   showRecipePopup(recipe);
-                }}>{recipe.name}</button>
+                }}>View Recipe</button>
 
                 <br/>
                 <br/>
@@ -182,9 +182,11 @@ const RecipeApp = ({ loggedInUser }) => {
 
         <div className="recipe-form">
           <h3>New Recipe</h3>
-          <button onClick={toggleFormVisibility} className='toggle-form-btn'>
-            {showForm ? 'Hide Form' : 'Show Form'}
-          </button>
+          <div className="add-recipe-container">
+    <button onClick={toggleFormVisibility} className='toggle-form-btn'>
+      {showForm ? 'Hide Form' : '➕'}
+    </button>
+  </div>
           {showForm && (
             <div className="add-recipe-form">
               <h2>{editingIndex !== null ? 'Edit Recipe' : "Add New Recipe"}</h2>

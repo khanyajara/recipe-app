@@ -98,3 +98,122 @@ h2, h3 {
 .pagination button:hover {
   background-color: #0056b3; /* Darker shade on hover */
 }
+.add-recipe-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.toggle-form-btn {
+  
+  padding: 0.5rem 1rem;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-form-btn:hover {
+  background-color: #0056b3; 
+}
+/* recipe.css */
+
+.recipe-form {
+  margin: 20px 0; /* Margin for spacing above and below the form */
+  padding: 20px; /* Padding inside the form container */
+  border: 1px solid #ccc; /* Light border around the form */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background for the form */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.add-recipe-container {
+  display: flex; /* Flex layout for button alignment */
+  justify-content: flex-end; /* Align to the left */
+  margin-bottom: 15px; /* Space below the button */
+}
+
+.toggle-form-btn {
+  background-color: #0d437e; /* Green background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Padding around the button */
+  cursor: pointer; /* Pointer on hover */
+  font-size: 16px; /* Font size for the button */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.toggle-form-btn:hover {
+  background-color: #085493; /* Darker green on hover */
+}
+
+.add-recipe-form {
+  display: flex; /* Flex layout for form elements */
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.add-recipe-form input,
+.add-recipe-form textarea,
+.add-recipe-form select {
+  width: 100%; /* Full width for inputs */
+  padding: 10px; /* Padding inside inputs */
+  margin: 5px 0; /* Margin above and below inputs */
+  border: 1px solid #ccc; /* Light border for inputs */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for inputs */
+  font-size: 16px; /* Font size for inputs */
+}
+
+.add-recipe-form textarea {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.add-recipe-form button {
+  background-color: #007bff; /* Blue background for submit button */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding for button */
+  cursor: pointer; /* Pointer on hover */
+  font-size: 16px; /* Font size for button */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.add-recipe-form button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.add-recipe-form label {
+  margin: 10px 0; /* Margin for spacing */
+}
+
+/* Popup Notification Styles */
+.popup-notification {
+  position: fixed; /* Fixed position for popup */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for exact center */
+  background-color: white; /* White background */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside the popup */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  z-index: 1000; /* Ensure popup is above other elements */
+}
+
+/* Footer Styles */
+.footer {
+  text-align: center; /* Center the footer text */
+  padding: 20px; /* Padding for spacing */
+  background-color: #f1f1f1; /* Light background for footer */
+  position: relative; /* Position relative for better layout */
+}
+
+.footer h2 {
+  margin: 0; /* Remove default margin */
+  font-size: 20px; /* Font size for footer */
+  color: #333; /* Dark text color */
+}
+
