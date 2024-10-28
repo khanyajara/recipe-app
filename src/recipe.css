@@ -1,523 +1,100 @@
-
- 
-  
-  
-  
- 
-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 22px 20px 22px;
-  box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  background-color: #e8e8e8;
-  border-color: #ffe2e2;
-  border-style: solid;
-  border-width: 9px;
-  border-radius: 35px;
-  transition: transform 400ms cubic-bezier(.68,-0.55,.27,2.5), 
-  border-color 400ms ease-in-out,
-  background-color 400ms ease-in-out;
-  word-spacing: -2px;
-}
-
-@keyframes movingBorders {
-  0% {
-    border-color: #fce4e4;
-  }
-
-  50% {
-    border-color: #ffd8d8;
-  }
-
-  90% {
-    border-color: #fce4e4;
-  }
-}
-
-button:hover {
-  background-color: #73e2d3;
-  transform: scale(105%);
-  animation: movingBorders 3s infinite;
-}
-
-.filled,
-.empty {
-  fill: rgb(255, 110, 110);
-  transition: opacity 100ms ease-in-out;
-}
-
-.filled {
-  position: absolute;
-  opacity: 0;
-}
-
-@keyframes beatingHeart {
-  0% {
-    transform: scale(1);
-  }
-
-  15% {
-    transform: scale(1.15);
-  }
-
-  30% {
-    transform: scale(1);
-  }
-
-  45% {
-    transform: scale(1.15);
-  }
-
-  60% {
-    transform: scale(1);
-  }
-}
-
-button:hover .empty {
-  opacity: 0;
-}
-
-button:hover .filled {
-  opacity: 1;
-  animation: beatingHeart 1.2s infinite;
-}
-
-/* From Uiverse.io by hannahyockel */ 
-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-  border: 0px solid transparent;
-  background-color: transparent;
-  border-radius: 1.25em;
-  transition: all 0.2s linear;
-  
- }
- 
- button:hover {
-  box-shadow: 3.4px 2.5px 4.9px rgba(0, 0, 0, 0.025),
-   8.6px 6.3px 12.4px rgba(0, 0, 0, 0.035),
-   17.5px 12.8px 25.3px rgba(0, 0, 0, 0.045),
-   36.1px 26.3px 52.2px rgba(0, 0, 0, 0.055),
-   99px 72px 143px rgba(0, 0, 0, 0.08);
- }
- 
- .tooltip {
-  position: relative;
-  display: inline-block;
- }
- 
- .tooltip .tooltiptext {
-  visibility: hidden;
-  width: 4em;
-  background-color: rgba(224, 156, 9, 0.644);
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  top: 25%;
-  left: 110%;
- }
- 
- .tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent rgba(161, 82, 82, 0.253) transparent transparent;
- }
- 
- .tooltip:hover .tooltiptext {
-  visibility: visible;
- }
- /* From Uiverse.io by aaronross1 */ 
-.edit-button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgb(212, 124, 22);
-  border: none;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 0px 20px rgb(15, 15, 13);
-  cursor: pointer;
-  transition-duration: 0.3s;
-  overflow: hidden;
-  position: relative;
-  text-decoration: none !important;
-}
-
-.edit-svgIcon {
-  width: 17px;
-  transition-duration: 0.3s;
-}
-
-.edit-svgIcon path {
-  fill: white;
-}
-
-.edit-button:hover {
-  width: 120px;
-  border-radius: 50px;
-  transition-duration: 0.3s;
-  background-color: transparent;
-  box-shadow: 0px 0px 20px rgb(17, 17, 16);
-  align-items: center;
-}
-
-.edit-button:hover .edit-svgIcon {
-  width: 20px;
-  transition-duration: 0.3s;
-  transform: translateY(60%);
-  -webkit-transform: rotate(360deg);
-  -moz-transform: rotate(360deg);
-  -o-transform: rotate(360deg);
-  -ms-transform: rotate(360deg);
-  transform: rotate(360deg);
-}
-
-.edit-button::before {
-  display: none;
-  content: "Edit";
-  color: rgb(17, 16, 16);
-  transition-duration: 0.3s;
-  font-size: 2px;
-}
-
-.edit-button:hover::before {
-  display: block;
-  padding-right: 10px;
-  font-size: 13px;
-  opacity: 1;
-  transform: translateY(0px);
-  transition-duration: 0.3s;
-}
-
-.recipe-btns{
-  display: flex;
-  margin: 25px;
-  padding: 15px;
-  justify-content: center;
-  justify-content: space-between;
-}
-
-.search-bar{
-  align-items: center;
-  margin-left: 596px;
-}
-
-
-
-
-
-.scroll-button{
-  margin-left: 525px;
-}
-.showbtn{
-  height: 32px;
-}
-* {
-  box-sizing: border-box;
-}
-
-/* Add a gray background color with some padding */
 body {
-  font-family: Arial;
-  padding: 20px;
-  background: #f1f1f1;
-  width: 1200px;
-  margin-left: 75px;
-  color: black;
-}
-
-/* Header/Blog Title */
-.header {
-  padding: 30px;
-  font-size: 40px;
-  text-align: center;
-  background: white;
-  width: 1500px;
-  
-}
-
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftcolumn {   
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
- 
-  align-items: flex-start;
-}
-
-.recipessss,.container{
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 16px;
-}
-
-.column{
-  float: left;
-  
-}
-/* Right column */
-.rightcolumn {
-  float: right;
-  width: 25%;
-  
-  margin-top: -2965px;
- 
- 
-}
-
-/* Fake image */
-.fakeimg {
-  background-color: #c53838;
-  width: 10%;
-  padding: 20px;
-  justify-items: center;
-  margin-left: 25px;
-}
-
-
-.card {
-   background-color: white;
-   padding: 20px;
-   margin-top: 20px;
-   margin-left: 25px;
-   
-   
-  
-}
-
-
-.row:after {
-  content: "";
-  
-  display: flex;
-  flex-direction: column;
-  clear: both;
-}.leftcolumn::-webkit-scrollbar {
-  width: 10px;
-}
-
-
-.leftcolumn::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
- 
-
-.leftcolumn::-webkit-scrollbar-thumb {
-  background: #888; 
-}
-
-/* Handle on hover */
-.leftcolumn::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-
-/* Footer */
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: #ddd;
-  margin-top: 20px;
-  width: 1722px;
-}
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) {
-  .leftcolumn, .rightcolumn {   
-    width: 100%;
-    padding: 0;
-  }
-}
-
-.category-select{
-  display: flex;
-  justify-items: stretch;
-  width: 220px;
-  flex-direction: column;
-  border: none;
-  background-color: transparent;
-  margin-left: -10px;
-}
-.cat-btn{
-  background-color:transparent;
-}
-
-
-.scroll-1::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-.scroll-1::-webkit-scrollbar-thumb {
-  border-radius: 20px;
-  background: #888;
-}
-
-.container * {
-  box-sizing: border-box;
-  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
   margin: 0;
-  width: 500px;
+  padding: 0;
 }
 
-.container {
-  display: flex;
-  overflow-x: scroll;
-  padding: 24px;
-  width: 700px;
-  scroll-snap-type: x mandatory;
-  scroll-padding-top: 24px;
+.recipe-app {
+  width: 1400px; 
+  margin: 40px auto; 
+  padding: 40px; 
+  background-color: #ffffff;
   border-radius: 8px;
-  gap: 20px;
-  color: black;
-  width: 500px;
-  margin-left: 00px;
-  
-  
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); 
 }
 
-.container .card {
-  flex: 0 0 100%;
-  overflow: hidden;
-  border-radius: 8px;
-  color: black;
-  background-color:gray;
-  scroll-snap-align: start;
+h2, h3 {
+  color: #007bff;
+}
+
+.recipe-container {
   display: flex;
   flex-direction: column;
-  width: 55%;
 }
 
-.card .card__image {
-  flex: 1;
-  height: 140px;
-  
+.recipe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Increased min column width */
+  gap: 30px; /* Increased spacing between cards */
 }
 
-
-.card .card__content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  width: 55%;
-  color: black;
-}
-
-.card .card__content .card__title {
-  font-size: 32px;
-  color: black;
-  text-transform: capitalize;
-}
-
-.card .card__content .card__describe {
-  color: black;
-  font-size: 16px;
-}
-
-.cat{
-  
-}
-.myBtns{
-  display: flex;
-  gap: 2.88rem;
-}
-
-body {
-font-family: 'Lato', sans-serif;
-}
-
-.overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
-}
-
-.overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
+.recipe-card {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px; /* Increased padding */
   text-align: center;
-  margin-top: 30px;
+  transition: transform 0.2s;
 }
 
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+.recipe-card:hover {
+  transform: scale(1.02);
 }
 
-.overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
+.recipe-image img {
+  width: 100%;
+  border-radius: 8px;
 }
 
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
+.recipe-content {
+  margin-top: 10px;
 }
 
-@media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
-  }
+.action-btn {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 12px 18px; /* Increased padding for buttons */
+  border-radius: 5px;
+  cursor: pointer;
+  
 }
 
-.sizeForCard{
+.recipe-btn {
+  background-color: #ffffff0c;
+  color: #0f0f0f;
+  border: none;
+  padding: 12px 18px; /* Increased padding for buttons */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pods{
   display: flex;
-  flex-direction: column;
-  width: 50%;
- 
-
+  justify-content: space-between;
+  
 }
 
-.another-btn{
-  color: black;
-  width: 150px;
+
+.pagination {
+  margin-top: 20px; /* Spacing for pagination */
+  display: flex;
+  justify-content: center; /* Centered pagination */
 }
 
-.btn1{
-  color: black;
-  justify-items: center;
-  width: 110px;
+.pagination button {
+  background-color: #007bff; /* Button color */
+  color: #ffffff; /* White text */
+  border: none;
+  padding: 10px 15px; /* Padding for pagination buttons */
+  border-radius: 5px; /* Rounded corners */
+  margin: 0 10px; /* Spacing between buttons */
+  cursor: pointer;
 }
 
-.dropdown{
-  color: black;
-}
-
-.recipeInfo{
-  color: black;
-}
-
-.card{
-  width: 400px;
+.pagination button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
 }

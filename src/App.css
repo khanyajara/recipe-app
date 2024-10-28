@@ -34,3 +34,232 @@
   justify-content: space-between;
 
 }
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  padding: 20px;
+  background: #f1f1f1;
+  color: black;
+}
+
+/* Header */
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Layout */
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.leftcolumn {
+  flex: 3; /* Takes up more space */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.recipessss {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 16px;
+  width: 100%; /* Full width */
+}
+
+.rightcolumn {
+  flex: 1; /* Takes up less space */
+  margin-left: 20px; /* Space between columns */
+}
+
+/* Card Styles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sizeForCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fakeimg {
+  background-color: #c53838;
+  width: 100%; /* Full width for the image */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* Button Styles */
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px; /* Adjusted padding */
+  background-color: #e8e8e8;
+  border: none;
+  border-radius: 35px;
+  transition: transform 400ms ease, background-color 400ms ease;
+}
+
+button:hover {
+  background-color: #73e2d3;
+  transform: scale(1.05);
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px; /* Adjusted for better readability */
+  background-color: rgba(224, 156, 9, 0.644);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 25%;
+  left: 110%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+  border-top: 1px solid #ccc; /* Added border for separation */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 800px) {
+  .columns {
+    flex-direction: column; /* Stack columns */
+  }
+
+  .rightcolumn {
+    margin-left: 0; /* Remove margin on small screens */
+  }
+}
+
+/* Custom Styles for Recipe Info */
+.recipeInfo {
+  color: black;
+  width: 100%; /* Full width for better display */
+  padding: 10px; /* Added padding */
+}
+
+.INFO {
+  margin: 5px 0; /* Space between info sections */
+}
+
+/* Additional button styles */
+.btn1 {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-top: 10px; /* Space between buttons */
+  transition: background-color 0.3s ease;
+}
+
+.btn1:hover {
+  background-color: #d1d1d1;
+}
+
+.another-btn {
+  color: black;
+  width: 100%; /* Full width for buttons */
+  text-align: left; /* Align text to the left */
+}
+
+/* Overlay Styles */
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover {
+  color: #f1f1f1;
+}
+
+/* Scrollbar Styles */
+.leftcolumn::-webkit-scrollbar {
+  width: 10px;
+}
+
+.leftcolumn::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.leftcolumn::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.leftcolumn::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+.card {
+  background-color: white;
+  padding: 25px;
+  margin-top: 20px; /* Keep if you want space above cards */
+  margin-bottom: 16px; 
+  margin-left: 190px;/* Add space below each card */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}.recipessss {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Responsive grid */
+  gap: 24px; /* Increased gap between cards */
+  width: 100px; /* Full width */
+}
+
+
+.category-select{
+  display: flex;
+}
