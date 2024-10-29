@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './recipe.css'; // Ensure the correct CSS file is imported
+import './recipe.css'; 
 import Categories from './components/categories';
 import UserInfo from './components/userInfo';
 import UserProfile from './components/UserProfile';
@@ -84,12 +84,12 @@ const RecipeApp = ({ loggedInUser }) => {
       category: '',
       isFavorite: false,
     });
-    setShowForm(false); // Close the form after submission
+    setShowForm(false); 
   };
 
   const toggleFormVisibility = () => {
     if (showProfile) {
-      setShowProfile(false); // Close user profile if it's open
+      setShowProfile(false); 
     }
     setShowForm(!showForm);
   };
@@ -129,7 +129,7 @@ const RecipeApp = ({ loggedInUser }) => {
     setPopup({ isOpen: true, recipe });
     setTimeout(() => {
       setPopup({ isOpen: false, recipe: null });
-    }, 5000); // Popup will disappear after 5 seconds
+    }, 5000); 
   };
 
   if (isLoading) {
@@ -144,7 +144,7 @@ const RecipeApp = ({ loggedInUser }) => {
     <div className='recipe-app'>
       <Categories />
       
-      {/* User Profile moved to top right */}
+     
       <div className="user-profile" style={{ position: 'absolute', top: '20px', right: '20px' }}>
         <button onClick={() => setShowProfile(!showProfile)}>
           {showProfile ? 'Hide Profile' : 'Show Profile'}

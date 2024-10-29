@@ -9,7 +9,7 @@ const RecipeManager = () => {
     const [selectedCategory, setSelectedCategory] = useState('null');
 
     useEffect(() => {
-        // Fetch your recipes from your data source
+    
         const fetchRecipes = async () => {
             const response = await fetch('/db.json');
             const data = await response.json();
@@ -21,7 +21,7 @@ const RecipeManager = () => {
     }, []);
 
     useEffect(() => {
-        // Filter recipes based on selected category
+        
         const filtered = recipes.filter(recipe =>
             selectedCategory === 'All' || recipe.category === selectedCategory
         );

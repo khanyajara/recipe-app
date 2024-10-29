@@ -7,12 +7,12 @@ body {
 }
 
 .recipe-app {
-  width: 1400px; 
-  margin: 40px auto; 
-  padding: 40px; 
+  width: 1400px;
+  margin: 40px auto;
+  padding: 40px;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 h2, h3 {
@@ -26,15 +26,15 @@ h2, h3 {
 
 .recipe-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Increased min column width */
-  gap: 30px; /* Increased spacing between cards */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 .recipe-card {
   background-color: #ffffff;
   border: 1px solid #dee2e6;
   border-radius: 8px;
-  padding: 20px; /* Increased padding */
+  padding: 20px;
   text-align: center;
   transition: transform 0.2s;
 }
@@ -56,48 +56,46 @@ h2, h3 {
   background-color: #007bff;
   color: #ffffff;
   border: none;
-  padding: 12px 18px; /* Increased padding for buttons */
+  padding: 12px 18px;
   border-radius: 5px;
   cursor: pointer;
-  
 }
 
 .recipe-btn {
   background-color: #ffffff0c;
   color: #0f0f0f;
   border: none;
-  padding: 12px 18px; /* Increased padding for buttons */
+  padding: 12px 18px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.pods{
+.pods {
   display: flex;
   justify-content: space-between;
-  
 }
 
-
 .pagination {
-  margin-top: 20px; /* Spacing for pagination */
+  margin-top: 20px;
   display: flex;
-  justify-content: center; /* Centered pagination */
+  justify-content: center;
 }
 
 .pagination button {
-  background-color: #007bff; /* Button color */
-  color: #ffffff; /* White text */
+  background-color: #007bff;
+  color: #ffffff;
   border: none;
-  padding: 10px 15px; /* Padding for pagination buttons */
-  border-radius: 5px; /* Rounded corners */
-  margin: 0 10px; /* Spacing between buttons */
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 0 10px;
   cursor: pointer;
 }
 
 .pagination button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3;
 }
+
 .add-recipe-container {
   display: flex;
   justify-content: flex-end;
@@ -105,7 +103,6 @@ h2, h3 {
 }
 
 .toggle-form-btn {
-  
   padding: 0.5rem 1rem;
   background-color: #0056b3;
   color: white;
@@ -115,105 +112,101 @@ h2, h3 {
 }
 
 .toggle-form-btn:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3;
 }
-/* recipe.css */
 
 .recipe-form {
-  margin: 20px 0; /* Margin for spacing above and below the form */
-  padding: 20px; /* Padding inside the form container */
-  border: 1px solid #ccc; /* Light border around the form */
-  border-radius: 8px; /* Rounded corners */
-  background-color: #f9f9f9; /* Light background for the form */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .add-recipe-container {
-  display: flex; /* Flex layout for button alignment */
-  justify-content: flex-end; /* Align to the left */
-  margin-bottom: 15px; /* Space below the button */
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
 }
 
 .toggle-form-btn {
-  background-color: #0d437e; /* Green background */
-  color: white; /* White text */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px 15px; /* Padding around the button */
-  cursor: pointer; /* Pointer on hover */
-  font-size: 16px; /* Font size for the button */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  background-color: #0d437e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .toggle-form-btn:hover {
-  background-color: #085493; /* Darker green on hover */
+  background-color: #085493;
 }
 
 .add-recipe-form {
-  display: flex; /* Flex layout for form elements */
-  flex-direction: column; /* Stack elements vertically */
+  display: flex;
+  flex-direction: column;
 }
 
 .add-recipe-form input,
 .add-recipe-form textarea,
 .add-recipe-form select {
-  width: 100%; /* Full width for inputs */
-  padding: 10px; /* Padding inside inputs */
-  margin: 5px 0; /* Margin above and below inputs */
-  border: 1px solid #ccc; /* Light border for inputs */
-  border-radius: 4px; /* Rounded corners */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for inputs */
-  font-size: 16px; /* Font size for inputs */
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
 }
 
 .add-recipe-form textarea {
-  resize: vertical; /* Allow vertical resizing */
+  resize: vertical;
 }
 
 .add-recipe-form button {
-  background-color: #007bff; /* Blue background for submit button */
-  color: white; /* White text */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px; /* Padding for button */
-  cursor: pointer; /* Pointer on hover */
-  font-size: 16px; /* Font size for button */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .add-recipe-form button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
 }
 
 .add-recipe-form label {
-  margin: 10px 0; /* Margin for spacing */
+  margin: 10px 0;
 }
 
-/* Popup Notification Styles */
 .popup-notification {
-  position: fixed; /* Fixed position for popup */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust for exact center */
-  background-color: white; /* White background */
-  border: 1px solid #ccc; /* Light border */
-  border-radius: 8px; /* Rounded corners */
-  padding: 20px; /* Padding inside the popup */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-  z-index: 1000; /* Ensure popup is above other elements */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
-/* Footer Styles */
 .footer {
-  text-align: center; /* Center the footer text */
-  padding: 20px; /* Padding for spacing */
-  background-color: #f1f1f1; /* Light background for footer */
-  position: relative; /* Position relative for better layout */
+  text-align: center;
+  padding: 20px;
+  background-color: #f1f1f1;
+  position: relative;
 }
 
 .footer h2 {
-  margin: 0; /* Remove default margin */
-  font-size: 20px; /* Font size for footer */
-  color: #333; /* Dark text color */
+  margin: 0;
+  font-size: 20px;
+  color: #333;
 }
-

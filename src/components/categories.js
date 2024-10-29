@@ -10,7 +10,7 @@ const Categories = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [recipesPerPage] = useState(2);
 
-    // Fetch data from the server
+  
     const fetchData = async () => {
         try {
             const response = await fetch('/db.json');
@@ -21,38 +21,38 @@ const Categories = () => {
 
             const data = await response.json();
             setRecipes(data.recipes);
-            setFilteredRecipes(data.recipes);  // Initialize filtered recipes with all recipes
+            setFilteredRecipes(data.recipes);  
         } catch (error) {
-            setError(error);  // Set error state
+            setError(error); 
         } finally {
-            setLoading(false);  // Stop loading
+            setLoading(false); 
         }
     };
 
     useEffect(() => {
-        fetchData();  // Fetch recipes on component mount
+        fetchData(); 
     }, []);
 
     useEffect(() => {
-        // Filter recipes based on the selected category and search query
+        
         const filtered = recipes.filter(recipe => {
             const matchesCategory = selectedCategory === 'All' || recipe.category === selectedCategory;
             const matchesSearch = recipe.name && recipe.name.toLowerCase().includes(search.toLowerCase()); // Ensure title exists
             return matchesCategory && matchesSearch;
         });
         setFilteredRecipes(filtered);
-        setCurrentPage(1); // Reset to first page when category or search changes
+        setCurrentPage(1);
     }, [selectedCategory, search, recipes]);
 
     const handleSearch = (event) => {
-        setSearch(event.target.value); // Update search state
+        setSearch(event.target.value);
     };
 
     const handleCategoryChange = (category) => {
-        setSelectedCategory(category); // Update selected category
+        setSelectedCategory(category); 
     };
 
-    // Fixed pagination logic
+   
     const indexOfFirstRecipe = (currentPage - 1) * recipesPerPage;
     const indexOfLastRecipe = Math.min(currentPage * recipesPerPage, filteredRecipes.length);
     const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
@@ -70,14 +70,14 @@ const Categories = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>;  // Show loading state
+        return <div>Loading...</div>;  
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>;  // Show error message
+        return <div>Error: {error.message}</div>; 
     }
 
-    // List of category buttons
+   
     const categories = ['All', 'Breakfast', 'Lunch', 'Brunch', 'Snacks', 'Dinner/Main', 'Dessert', 'Appetizers'];
 
     return (
@@ -111,7 +111,7 @@ const Categories = () => {
                 ))}
             </div>
 
-            {/* Pagination Controls */}
+      
             <div className="pagination">
                 <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
                 <button onClick={nextPage} disabled={indexOfLastRecipe >= filteredRecipes.length}>Next</button>
