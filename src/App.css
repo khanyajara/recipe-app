@@ -84,7 +84,8 @@ button {
 }
 
 button:hover {
-  background-color: #73e2d3;
+  background-color: #3087d8;
+  color: white;
   transform: scale(1.05);
 }
 

@@ -197,7 +197,7 @@ const RecipeApp = ({ loggedInUser }) => {
     setPopup({ isOpen: true, recipe });
     setTimeout(() => {
       setPopup({ isOpen: false, recipe: null });
-    }, 5000);
+    }, 60000);
   };
 
   if (isLoading) {
