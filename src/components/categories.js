@@ -8,9 +8,9 @@ const Categories = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [recipesPerPage] = useState(2);
+    const [recipesPerPage] = useState(4);
+    const [menuOpen, setMenuOpen] = useState(false); // State to handle the hamburger menu
 
-  
     const fetchData = async () => {
         try {
             const response = await fetch('/db.json');
@@ -34,10 +34,9 @@ const Categories = () => {
     }, []);
 
     useEffect(() => {
-        
         const filtered = recipes.filter(recipe => {
             const matchesCategory = selectedCategory === 'All' || recipe.category === selectedCategory;
-            const matchesSearch = recipe.name && recipe.name.toLowerCase().includes(search.toLowerCase()); // Ensure title exists
+            const matchesSearch = recipe.name && recipe.name.toLowerCase().includes(search.toLowerCase());
             return matchesCategory && matchesSearch;
         });
         setFilteredRecipes(filtered);
@@ -52,7 +51,6 @@ const Categories = () => {
         setSelectedCategory(category); 
     };
 
-   
     const indexOfFirstRecipe = (currentPage - 1) * recipesPerPage;
     const indexOfLastRecipe = Math.min(currentPage * recipesPerPage, filteredRecipes.length);
     const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
@@ -69,6 +67,10 @@ const Categories = () => {
         }
     };
 
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen); // Toggle the hamburger menu
+    };
+
     if (loading) {
         return <div>Loading...</div>;  
     }
@@ -77,11 +79,32 @@ const Categories = () => {
         return <div>Error: {error.message}</div>; 
     }
 
-   
     const categories = ['All', 'Breakfast', 'Lunch', 'Brunch', 'Snacks', 'Dinner/Main', 'Dessert', 'Appetizers'];
 
     return (
         <div>
+            <div className="hamburger-menu" onClick={toggleMenu}>
+                &#9776; {/* Hamburger icon */}
+            </div>
+            
+            {menuOpen && (
+                <div className="menu">
+                    {categories.map((category) => (
+                        <button key={category} className="cat-btn" onClick={() => handleCategoryChange(category)}>
+                            {category}
+                        </button>
+                    ))}
+                </div>
+            )}
+
+            <input 
+                type="text" 
+                placeholder="Search recipes..." 
+                value={search} 
+                className='search-container'
+                onChange={handleSearch} 
+            />
+
             <div className='category-select'>
                 {categories.map((category) => (
                     <button key={category} className="cat-btn" onClick={() => handleCategoryChange(category)}>
@@ -89,13 +112,6 @@ const Categories = () => {
                     </button>
                 ))}
             </div>
-
-            <input 
-                type="text" 
-                placeholder="Search recipes..." 
-                value={search} 
-                onChange={handleSearch} 
-            />
 
             <div className="recipe-list">
                 {currentRecipes.map((recipe, index) => (
@@ -111,7 +127,6 @@ const Categories = () => {
                 ))}
             </div>
 
-      
             <div className="pagination">
                 <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
                 <button onClick={nextPage} disabled={indexOfLastRecipe >= filteredRecipes.length}>Next</button>

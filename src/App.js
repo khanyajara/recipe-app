@@ -27,7 +27,7 @@ const App = () => {
       setIsAuthenticated(true);
       setLoggedInUser(storedUser);
     }
-    setLoading(false); // Done loading user data
+    setLoading(false); 
   }, []);
 
   const handleLogin = () => {
@@ -36,11 +36,7 @@ const App = () => {
     setIsAuthenticated(true);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('loggedInUser');
-    setLoggedInUser(null);
-    setIsAuthenticated(false);
-  };
+  
 
   
 
@@ -130,29 +126,23 @@ const App = () => {
     <Router className='column'>
       <div className="app"><video className="logo-video" autoPlay loop muted>
                 <source src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/meal-8820888-7140050.mp4" type="video/mp4" /><h1>My Personal Chef</h1>
-                Need a better browser.
+               
               </video> <div className='classy'>
                 <div className="user-info">
                 <h3>Welcome, {loggedInUser?.username || 'User'}!</h3>
                             </div><div>
-                              <button onClick={handleLogout}>Logout</button></div>
+              
+                              </div>
+              
+  
               </div>
+
+
         
-        <div className="header">
-  <h2>My Personal Chef</h2>
-</div>
+      
         {isAuthenticated ? (
           <>
-            <div className="logo-container"> <div className="search-container">
-                <input
-                  type="text"
-                  placeholder="Search recipes"
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  className="search-input"
-                />
-                <button className="search-button" onClick={handleSearchClick}>Search</button>
-              </div>
+            <div className="logo-container"> 
               
             </div>
             
