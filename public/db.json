@@ -14,7 +14,7 @@
           "Quickly add the hot spaghetti to the skillet with pancetta fat. Pour the egg mixture over the spaghetti and toss rapidly to coat the pasta without scrambling the eggs.",
           "Continue tossing until the sauce thickens and becomes creamy. Serve immediately with extra Parmesan and black pepper if desired."
         ],
-        "user-id":""
+        "PrepTime":"45Mins"
       },
       {
         "id": 2,
@@ -29,7 +29,7 @@
           "In a large pan, sauté chopped onions until translucent. Add minced garlic, grated ginger, and spices like cumin, coriander, and turmeric. Cook until fragrant.",
           "Add tomato puree to the pan and simmer until thickened. Stir in cooked chicken pieces and heavy cream. Simmer for a few more minutes until the flavors meld together. Serve with rice or naan."
         ],
-        "user-id":""
+        "PrepTime":"1hr 15mins"
       },
       {
         "id": 3,
@@ -44,7 +44,7 @@
           "Place thin slices of salmon, avocado, and cucumber in a line along the bottom edge of the rice.",
           "Using the sushi mat, roll the nori tightly around the fillings. Moisten the border with water to seal. Cut the roll into bite-sized pieces using a sharp, wet knife. Serve with soy sauce and wasabi."
         ],
-        "user-id":""
+        "PrepTime":"45Mins"
       },
       {
         "id": 4,
@@ -58,7 +58,7 @@
           "Pour red wine into the pot, scraping up any browned bits from the bottom. Bring to a simmer.",
           "Return the beef and bacon to the pot. Add beef broth, minced garlic, thyme, and a bay leaf. Cover and simmer on low heat for several hours until the beef is tender and the flavors are well-developed."
         ],
-        "user-id":""
+        "PrepTime":"50 mins"
       },
       {
         "id": 5,
@@ -71,7 +71,7 @@
           "Cook the marinated pork on a vertical rotisserie (or grill) until fully cooked and slightly charred.",
           "Thinly slice the cooked pork. Serve on warm corn tortillas with grilled pineapple, chopped onions, and cilantro. Squeeze fresh lime juice over the top before serving."
         ],
-        "user-id":""
+        "PrepTime":"1hr 30Mins"
       },
       {
         "id": 6,
@@ -85,7 +85,7 @@
           "In a baking dish, layer cooked lasagna noodles, meat sauce, dollops of ricotta cheese, shredded mozzarella, and grated Parmesan. Repeat layers until the dish is filled.",
           "Cover with foil and bake in a preheated oven until the lasagna is bubbly and heated through. Remove foil and bake until the top is golden brown. Let cool slightly before serving."
         ],
-        "user-id":""
+        "PrepTime":"1hr 30Mins"
       },
       {
         "id": 7,
@@ -99,7 +99,7 @@
           "Stir the chicken and vegetables into the sauce, mixing well.",
           "Pour the mixture into a pie dish. Roll out puff pastry to cover the top, sealing the edges. Cut slits for steam to escape. Bake until the pastry is golden brown and the filling is bubbly."
         ],
-        "user-id":""
+        "PrepTime":"1hr 15mins"
       },
       {
         "id": 8,
@@ -112,7 +112,7 @@
           "In a large pot, melt butter and whisk in flour to make a roux. Gradually add milk, whisking constantly until thickened. Stir in shredded cheddar cheese until melted and smooth.",
           "Add the cooked macaroni to the cheese sauce, stirring to coat evenly. Serve immediately, optionally topped with breadcrumbs and baked for a crispy top."
         ],
-        "user-id":""
+        "PrepTime":"30Mins"
       },
       {
         "id": 9,
@@ -124,7 +124,7 @@
           "In a large pot, brown beef chuck pieces on all sides. Remove and set aside. In the same pot, sauté chopped onions and minced garlic until softened.",
           "Return the beef to the pot. Add chopped carrots, potatoes, beef broth, red wine, bay leaf, thyme, and rosemary. Bring to a boil, then reduce heat and simmer until the beef and vegetables are tender and the stew has thickened."
         ],
-        "user-id":""
+        "PrepTime":"1hr 15mins"
       },
       {
         "id": 10,
@@ -135,7 +135,7 @@
         "instructions": [
           "In a bowl, whisk together flour, baking powder, and sugar. In a separate bowl, whisk together milk, eggs, and melted butter. Pour the wet ingredients into the dry ingredients and stir until just combined.",
           "Heat a griddle or non-stick pan over medium"],
-          "user-id":20
+          "PrepTime":"45Mins"
       },
       {
         "id":11,
@@ -144,7 +144,7 @@
         "category":["Breakfast/Brunch"],
         "ingredients":["4 large eggs","1 cup milk(whole or 2%)","2 tbsp granulated sugar","1 tsp vanilla extract","1/2 tsp ground cinnamon","8 slices of bread (preferably slightly stale , like brioche or challah)","2 tbsp butter (for cooking)","maple syrup,powdered sugar , or fresh fruit (for serving )"],
         "instructions":["Prepare the Batter:in a large bowl, whisk together the eggs, milk , sugar, vanilla extract, and cinnamon until well combined.","Prepare the Pan :Heat a non-stick skillet or griddle over medium heat. Add a bit of butter and let it melt, coating the pan evenly. ","Dip the Bread:Dip each slice of bread into the egg mixture, making sure to coat both sides well but not soak it too long to prevent sogginess.","Cook The Bread:Place the dipped bread slices onto the skillet or griddle. Cook for about 2-3 minutes on each side, or until golden brown and crispy.","Serve:Transfer the cooked French toast to a plate and keep warm. Repeat with remaining slices, adding more butter to the pan as needed.","Top and Enjoy:Serve your French toast warm with maple syrup, powdered sugar, fresh fruit, or any toppings you like."],
-        "user-id":""
+        "PrepTime":"45Mins"
       }
     ]
   }

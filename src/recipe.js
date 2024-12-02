@@ -318,7 +318,11 @@ const RecipeApp = ({ loggedInUser }) => {
         {popup.isOpen && (
           <div className="popup-notification">
             <h4>{popup.recipe.name}</h4>
-            <p>{popup.recipe.instructions}</p>
+            <p><strong>Ingredients:</strong><br/>{popup.recipe.ingredients}</p>
+            <p><strong>Instructions:</strong><br/>{popup.recipe.instructions}</p>
+            <p><strong>Meal type:</strong><br/>{popup.recipe.category}</p>
+            <p><strong>Servings:</strong><br/>{popup.recipe.recipeServings}</p>
+            <p><strong>Prep-time</strong><br/>{popup.recipe.PrepTime}</p>
             <button onClick={() => setPopup({ isOpen: false, recipe: null })}>Close</button>
           </div>
         )}
