@@ -63,7 +63,7 @@ const RecipeApp = ({ loggedInUser }) => {
     localStorage.removeItem('loggedInUser');
     setLoggedInUser(null);
     setIsAuthenticated(false);
-    Navigate('/login')
+    Navigate('/')
   };
 
   const handleFormSubmit = (e) => {
